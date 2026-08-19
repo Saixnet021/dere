@@ -1,0 +1,127 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CartDrawer from '../components/CartDrawer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { STORE_CONFIG } from '../config';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+  image?: string;
+}
+
+const {
+  title = `${STORE_CONFIG.name} | Accesorios Botánicos y Parafernalia`,
+  description = STORE_CONFIG.description,
+  currentPath = Astro.url.pathname,
+  image = '/images/hero-banner.svg'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'http://localhost:4321');
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <!-- Encabezado de la Tienda -->
+    <Header currentPath={currentPath} />
+
+    <!-- Contenido Principal de la Página -->
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Pie de Página -->
+    <Footer />
+
+    <!-- Componentes Flotantes y Drawer del Carrito -->
+    <CartDrawer />
+    <WhatsAppFloat />
+
+    <!-- Toast Notification Flotante -->
+    <div id="toast-container" class="toast-container">
+      <div id="cart-toast" class="toast">
+        <svg class="icon-outline toast-icon" viewBox="0 0 24 24" width="18" height="18">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <span id="toast-message">Producto agregado al carrito</span>
+      </div>
+    </div>
+
+    <!-- Script Global para Agregar al Carrito desde cualquier botón [data-add-cart] -->
+    <script>
+      import { addToCart } from '../stores/cartStore';
+
+      // Delegación de eventos para capturar clics en botones de agregar al carrito
+      document.addEventListener('click', (event) => {
+        const target = (event.target as HTMLElement).closest('[data-add-cart]') as HTMLElement;
+        if (!target) return;
+
+        event.preventDefault();
+        const id = target.dataset.id;
+        const name = target.dataset.name;
+        const slug = target.dataset.slug;
+        const price = parseFloat(target.dataset.price || '0');
+        const image = target.dataset.image || '/images/logo.svg';
+        const category = target.dataset.category || 'General';
+        const qtyInput = document.getElementById(`qty-input-${id}`) as HTMLInputElement;
+        const quantity = qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1;
+
+        if (id && name && price) {
+          addToCart({ id, name, slug: slug || id, price, image, categoryName: category }, quantity);
+        }
+      });
+
+      // Manejador del Toast
+      const toast = document.getElementById('cart-toast');
+      const toastMsg = document.getElementById('toast-message');
+      let toastTimeout: any;
+
+      window.addEventListener('cart-toast', (e: any) => {
+        if (toast && toastMsg) {
+          const detail = e.detail;
+          toastMsg.textContent = `¡"${detail.name}" agregado al carrito!`;
+          toast.classList.add('show');
+
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+          }, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>

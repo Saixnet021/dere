@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" fill="none">
+  <defs>
+    <!-- Marcianito Alien Head 420 -->
+    <g id="alien-head-pattern">
+      <!-- Head -->
+      <path d="M0 -14 C-7 -14 -11 -7 -10 2 C-9 9 -4 14 0 16 C4 14 9 9 10 2 C11 -7 7 -14 0 -14 Z" fill="#22C55E" />
+      <!-- Big Alien Eyes -->
+      <ellipse cx="-4" cy="-2" rx="3" ry="4.5" transform="rotate(-15 -4 -2)" fill="#070A08" />
+      <ellipse cx="4" cy="-2" rx="3" ry="4.5" transform="rotate(15 4 -2)" fill="#070A08" />
+      <!-- Joint -->
+      <path d="M1 9 L6 11" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" />
+      <circle cx="6.5" cy="11.2" r="0.7" fill="#EF4444" />
+    </g>
+
+    <!-- Flying Saucer / Platillo Volador UFO 420 -->
+    <g id="ufo-pattern">
+      <!-- Dome -->
+      <ellipse cx="0" cy="-3" rx="7" ry="5" fill="#4ADE80" opacity="0.9" />
+      <!-- Disc -->
+      <ellipse cx="0" cy="0" rx="16" ry="4.5" fill="#22C55E" />
+      <ellipse cx="0" cy="1" rx="12" ry="2" fill="#132417" />
+      <!-- Beams/Lights -->
+      <circle cx="-9" cy="0.5" r="1" fill="#FFFFFF" />
+      <circle cx="0" cy="1.5" r="1.2" fill="#FFFFFF" />
+      <circle cx="9" cy="0.5" r="1" fill="#FFFFFF" />
+    </g>
+
+    <!-- Hoja de Cannabis 7 Puntas -->
+    <g id="weed-leaf-pattern">
+      <path d="M0 -22 C-2 -13 -2 -5 0 10 C2 -5 2 -13 0 -22 Z" fill="#22C55E" />
+      <path d="M0 -10 C-9 -16 -13 -12 -15 -6 C-11 -4 -6 -6 0 -5 Z" fill="#22C55E" />
+      <path d="M0 -10 C9 -16 13 -12 15 -6 C11 -4 6 -6 0 -5 Z" fill="#22C55E" />
+      <path d="M0 -3 C-8 -5 -11 -1 -11 4 C-7 4 -3 1 0 0 Z" fill="#22C55E" />
+      <path d="M0 -3 C8 -5 11 -1 11 4 C7 4 3 1 0 0 Z" fill="#22C55E" />
+      <line x1="0" y1="-20" x2="0" y2="12" stroke="#080C09" stroke-width="1" stroke-linecap="round" />
+    </g>
+
+    <!-- Cosmic Star 420 -->
+    <g id="cosmic-star">
+      <path d="M0 -5 L1 -1 L5 0 L1 1 L0 5 L-1 1 L-5 0 L-1 -1 Z" fill="#4ADE80" />
+    </g>
+  </defs>
+
+  <!-- Capa de Patrón Seamless con Opacidad Calibrada (0.09) -->
+  <g opacity="0.095">
+    <!-- Marcianitos Aliens Distribuidos -->
+    <use href="#alien-head-pattern" x="160" y="80" transform="rotate(12 160 80) scale(1.1)" />
+    <use href="#alien-head-pattern" x="60" y="240" transform="rotate(-15 60 240) scale(1)" />
+    <use href="#alien-head-pattern" x="260" y="250" transform="rotate(20 260 250) scale(1.05)" />
+
+    <!-- Platillos Voladores UFOs -->
+    <use href="#ufo-pattern" x="70" y="70" transform="rotate(-12 70 70) scale(0.95)" />
+    <use href="#ufo-pattern" x="240" y="150" transform="rotate(18 240 150) scale(0.9)" />
+
+    <!-- Hojas de Cannabis -->
+    <use href="#weed-leaf-pattern" x="160" y="220" transform="rotate(30 160 220) scale(0.95)" />
+    <use href="#weed-leaf-pattern" x="0" y="0" transform="rotate(-20 0 0)" />
+    <use href="#weed-leaf-pattern" x="320" y="0" transform="rotate(-20 320 0)" />
+    <use href="#weed-leaf-pattern" x="0" y="320" transform="rotate(-20 0 320)" />
+    <use href="#weed-leaf-pattern" x="320" y="320" transform="rotate(-20 320 320)" />
+
+    <!-- Estrellas y Planetas Cósmicos 420 -->
+    <use href="#cosmic-star" x="110" y="160" />
+    <use href="#cosmic-star" x="200" y="30" />
+    <use href="#cosmic-star" x="290" y="90" />
+    <use href="#cosmic-star" x="30" y="180" />
+    <use href="#cosmic-star" x="200" y="290" />
+    <use href="#cosmic-star" x="120" y="300" />
+    
+    <!-- Constelaciones / Cruces Finas -->
+    <circle cx="130" cy="120" r="1.5" fill="#22C55E" />
+    <circle cx="180" cy="180" r="1" fill="#4ADE80" />
+    <circle cx="40" cy="120" r="1.2" fill="#22C55E" />
+    <circle cx="280" cy="40" r="1" fill="#22C55E" />
+  </g>
+</svg>

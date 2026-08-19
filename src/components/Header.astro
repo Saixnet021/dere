@@ -1,0 +1,449 @@
+---
+import { STORE_CONFIG } from '../config';
+import Logo from './Logo.astro';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navLinks = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Catálogo 420', href: '/productos' },
+  { name: 'Bongs & Pipas', href: '/productos?categoria=bongs' },
+  { name: 'Vaporizadores', href: '/productos?categoria=vapes' },
+  { name: 'Rolling & Sedas', href: '/productos?categoria=rolling-papers' },
+  { name: 'Nosotros', href: '/nosotros' },
+  { name: 'Contacto', href: '/contacto' },
+];
+---
+
+<header class="site-header-wrap">
+  <!-- Barra Superior Discreta de Envíos en Perú -->
+  <div class="top-announcement">
+    <div class="container announcement-inner">
+      <div class="announcement-item">
+        <svg class="icon-outline icon-sm" viewBox="0 0 24 24" width="14" height="14">
+          <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+          <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+          <circle cx="5.5" cy="18.5" r="2.5"></circle>
+          <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        </svg>
+        <span>Envío Gratis a todo el Perú en pedidos mayores a {STORE_CONFIG.currencySymbol} {STORE_CONFIG.freeShippingThreshold.toFixed(2)} &bull; Empaque 100% Discreto</span>
+      </div>
+      <div class="announcement-item hide-mobile">
+        <span>Smoke Shop Oficial 420 &bull; Atención directa por WhatsApp</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Principal -->
+  <div class="site-header">
+    <div class="container header-container">
+      <!-- Logo Principal con Componente SVG Nativo -->
+      <a href="/" class="header-logo" aria-label="Artículos para Hierbas Inicio">
+        <Logo width={240} height={36} />
+      </a>
+
+      <!-- Navegación Desktop -->
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          {navLinks.map((link) => (
+            <li>
+              <a 
+                href={link.href} 
+                class:list={['nav-link', { active: currentPath === link.href }]}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Acciones de Cabecera -->
+      <div class="header-actions">
+        <!-- Enlace Directo a WhatsApp con Icono Real -->
+        <a 
+          href={`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me gustaría hacer una consulta sobre la parafernalia de Artículos para Hierbas Perú.')}`} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="icon-btn whatsapp-header-btn"
+          title="Atención directa por WhatsApp Perú"
+          aria-label="Atención por WhatsApp"
+        >
+          <WhatsAppIcon size={20} fill="#22C55E" />
+        </a>
+
+        <!-- Botón de Búsqueda Rápida -->
+        <a 
+          href="/productos" 
+          class="icon-btn search-header-btn"
+          title="Buscar productos 420"
+          aria-label="Buscar productos"
+        >
+          <svg class="icon-outline" viewBox="0 0 24 24" width="19" height="19">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+
+        <!-- Botón del Carrito de Compras -->
+        <button 
+          id="header-cart-toggle-btn" 
+          class="cart-btn" 
+          aria-label="Ver carrito de compras"
+        >
+          <svg class="icon-outline" viewBox="0 0 24 24" width="20" height="20">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-label hide-mobile">Carrito</span>
+          <span id="header-cart-count-badge" class="cart-count">0</span>
+        </button>
+
+        <!-- Botón Menú Móvil -->
+        <button 
+          id="mobile-menu-toggle-btn" 
+          class="icon-btn mobile-menu-btn" 
+          aria-label="Abrir menú"
+        >
+          <svg class="icon-outline" viewBox="0 0 24 24" width="22" height="22">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menú Móvil Lateral -->
+  <div id="mobile-menu-panel" class="mobile-menu-panel">
+    <div class="mobile-menu-header">
+      <Logo width={200} height={30} />
+      <button id="mobile-menu-close-btn" class="icon-btn" aria-label="Cerrar menú">
+        <svg class="icon-outline" viewBox="0 0 24 24" width="20" height="20">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href} class="mobile-nav-link">
+            {link.name}
+            <svg class="icon-outline" viewBox="0 0 24 24" width="16" height="16">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+        <WhatsAppIcon size={18} fill="#052010" />
+        <span>Atención WhatsApp Perú</span>
+      </a>
+    </div>
+  </div>
+  <div id="mobile-menu-backdrop" class="mobile-backdrop"></div>
+</header>
+
+<style>
+  /* Barra Superior */
+  .top-announcement {
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+  }
+
+  .announcement-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .announcement-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .icon-sm {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  /* Header Principal */
+  .site-header {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+  }
+
+  .header-container {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  /* Navegación Desktop */
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 992px) {
+    .desktop-nav {
+      display: block;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1.75rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    position: relative;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-link.active {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+  }
+
+  /* Acciones */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+  }
+
+  .icon-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: var(--bg-tertiary);
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  @media (min-width: 992px) {
+    .mobile-menu-btn {
+      display: none;
+    }
+  }
+
+  /* Botón Carrito */
+  .cart-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.15rem;
+    height: 40px;
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    font-size: 0.875rem;
+    font-weight: 700;
+    transition: all var(--transition-fast);
+  }
+
+  .cart-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: var(--bg-tertiary);
+  }
+
+  .cart-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-accent);
+    color: var(--text-on-accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  /* Menú Móvil */
+  .mobile-menu-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 85%;
+    max-width: 320px;
+    background-color: var(--bg-secondary);
+    z-index: 1000;
+    border-right: 1px solid var(--border-color);
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-menu-panel.open {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    padding: 1rem 0;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .mobile-nav-link:hover {
+    background-color: var(--bg-accent-light);
+    color: var(--color-accent);
+  }
+
+  .mobile-menu-footer {
+    padding: 1.25rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+  }
+
+  .mobile-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (max-width: 768px) {
+    .hide-mobile {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { $cart } from '../stores/cartStore';
+
+  // Actualizar contador del carrito en el Header
+  const updateCartBadge = () => {
+    const badge = document.getElementById('header-cart-count-badge');
+    if (!badge) return;
+    const state = $cart.get();
+    const totalCount = state.items.reduce((sum, item) => sum + item.quantity, 0);
+    badge.textContent = totalCount.toString();
+  };
+
+  // Abrir CartDrawer desde el botón del Header
+  const cartBtn = document.getElementById('header-cart-toggle-btn');
+  cartBtn?.addEventListener('click', () => {
+    window.dispatchEvent(new CustomEvent('open-cart-drawer'));
+  });
+
+  // Manejo del menú móvil
+  const mobileMenuBtn = document.getElementById('mobile-menu-toggle-btn');
+  const mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
+  const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+  const mobileBackdrop = document.getElementById('mobile-menu-backdrop');
+
+  const toggleMobileMenu = (open: boolean) => {
+    if (open) {
+      mobileMenuPanel?.classList.add('open');
+      mobileBackdrop?.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      mobileMenuPanel?.classList.remove('open');
+      mobileBackdrop?.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  };
+
+  mobileMenuBtn?.addEventListener('click', () => toggleMobileMenu(true));
+  mobileMenuCloseBtn?.addEventListener('click', () => toggleMobileMenu(false));
+  mobileBackdrop?.addEventListener('click', () => toggleMobileMenu(false));
+
+  // Escuchar cambios de estado del carrito
+  $cart.subscribe(() => updateCartBadge());
+  window.addEventListener('cart-changed', updateCartBadge);
+  updateCartBadge();
+</script>

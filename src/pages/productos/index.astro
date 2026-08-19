@@ -1,0 +1,521 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import products from '../../data/products.json';
+import { STORE_CONFIG } from '../../config';
+
+const categories = STORE_CONFIG.categories;
+---
+
+<Layout 
+  title="Catálogo 420 Perú | Bongs, Vapes, Pipas & Accesorios"
+  description="Explora nuestro catálogo completo de bongs de borosilicato, vaporizadores herbales, pipas, papelillos Raw y grinders con envíos 100% discretos en Perú."
+>
+  <div class="catalog-page">
+    <div class="container">
+      <!-- Breadcrumbs & Encabezado -->
+      <div class="catalog-header">
+        <nav class="breadcrumbs" aria-label="Navegación secundaria">
+          <a href="/">Inicio</a>
+          <span class="sep">/</span>
+          <span class="current">Catálogo 420</span>
+        </nav>
+        <h1 class="catalog-title">Catálogo Completo 420 Perú</h1>
+        <p class="catalog-subtitle">
+          Parafernalia cannábica y cristalería de alta gama con envíos 100% discretos a todo el Perú y pedidos por WhatsApp.
+        </p>
+      </div>
+
+      <!-- Barra de Filtros y Búsqueda -->
+      <div class="catalog-controls">
+        <!-- Pestañas de Categorías (Líneas Finas) -->
+        <div class="category-tabs" id="category-tabs">
+          {categories.map((cat) => (
+            <button 
+              class={`cat-tab-btn ${cat.id === 'todos' ? 'active' : ''}`}
+              data-category-id={cat.id}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+
+        <!-- Barra de Búsqueda y Ordenamiento -->
+        <div class="search-sort-bar">
+          <div class="search-input-wrap">
+            <svg class="icon-outline search-icon" viewBox="0 0 24 24" width="18" height="18">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              id="catalog-search-input" 
+              class="search-input" 
+              placeholder="Buscar por nombre, material o marca (ej. Raw, Beaker, Roor)..." 
+            />
+            <button id="clear-search-btn" class="clear-search" aria-label="Limpiar búsqueda" style="display: none;">
+              ✕
+            </button>
+          </div>
+
+          <div class="sort-select-wrap">
+            <label for="catalog-sort-select" class="sort-label">Ordenar por:</label>
+            <select id="catalog-sort-select" class="sort-select">
+              <option value="featured">Destacados</option>
+              <option value="price-asc">Menor precio</option>
+              <option value="price-desc">Mayor precio</option>
+              <option value="name-asc">Nombre (A - Z)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contador de Resultados -->
+      <div class="results-meta">
+        <span id="results-count" class="results-count">Mostrando {products.length} productos</span>
+        <span id="active-filter-badge" class="active-filter-badge" style="display: none;">
+          Filtro: <strong id="active-filter-name">Todos</strong>
+          <button id="reset-filter-btn" class="reset-filter" title="Eliminar filtro">✕</button>
+        </span>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div class="products-grid" id="catalog-products-grid">
+        {products.map((product) => (
+          <div 
+            class="product-item-wrapper" 
+            data-category={product.category}
+            data-name={product.name.toLowerCase()}
+            data-desc={product.description.toLowerCase()}
+            data-tags={product.tags.join(' ').toLowerCase()}
+            data-price={product.price}
+            data-featured={product.featured ? '1' : '0'}
+          >
+            <ProductCard product={product} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Estado Sin Resultados -->
+      <div id="no-results" class="no-results-box" style="display: none;">
+        <div class="no-results-icon">
+          <svg class="icon-outline" viewBox="0 0 24 24" width="32" height="32">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </div>
+        <h3 class="no-results-title">No se encontraron productos</h3>
+        <p class="no-results-desc">Intenta ajustar tu búsqueda o seleccionar otra categoría.</p>
+        <button id="reset-all-btn" class="btn btn-outline btn-sm">
+          Ver todos los productos
+        </button>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .catalog-page {
+    padding: 3rem 0 5rem 0;
+  }
+
+  .catalog-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--color-accent);
+  }
+
+  .breadcrumbs .sep {
+    color: var(--border-color);
+  }
+
+  .breadcrumbs .current {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .catalog-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .catalog-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 650px;
+    line-height: 1.5;
+  }
+
+  /* Pestañas de categorías */
+  .catalog-controls {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .category-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+  }
+
+  .cat-tab-btn {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+  }
+
+  .cat-tab-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent-sage);
+    background-color: var(--bg-tertiary);
+  }
+
+  .cat-tab-btn.active {
+    background-color: var(--color-accent);
+    color: var(--text-on-accent);
+    border-color: var(--color-accent);
+  }
+
+  /* Barra de búsqueda y orden */
+  .search-sort-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .search-input-wrap {
+    flex: 1;
+    min-width: 280px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1.15rem;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0.8rem 2.5rem 0.8rem 2.85rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 1px var(--color-accent);
+  }
+
+  .clear-search {
+    position: absolute;
+    right: 0.85rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .clear-search:hover {
+    color: #F87171;
+  }
+
+  .sort-select-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .sort-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .sort-select {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+  }
+
+  .sort-select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  /* Resultados Meta */
+  .results-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.85rem;
+  }
+
+  .results-count {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .active-filter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--bg-accent-light);
+    border: 1px solid var(--color-accent-border);
+    border-radius: var(--radius-pill);
+    font-size: 0.775rem;
+    font-weight: 700;
+    color: var(--color-accent-sage);
+  }
+
+  .reset-filter {
+    color: var(--color-accent);
+    font-weight: 700;
+    margin-left: 0.2rem;
+  }
+
+  /* Sin Resultados */
+  .no-results-box {
+    padding: 4rem 2rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-subtle);
+  }
+
+  .no-results-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem auto;
+  }
+
+  .no-results-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .no-results-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+</style>
+
+<script>
+  // Lógica interactiva de filtrado y búsqueda del catálogo
+  const tabButtons = document.querySelectorAll('.cat-tab-btn');
+  const searchInput = document.getElementById('catalog-search-input') as HTMLInputElement;
+  const clearSearchBtn = document.getElementById('clear-search-btn');
+  const sortSelect = document.getElementById('catalog-sort-select') as HTMLSelectElement;
+  const productsGrid = document.getElementById('catalog-products-grid');
+  const noResults = document.getElementById('no-results');
+  const resultsCount = document.getElementById('results-count');
+  const filterBadge = document.getElementById('active-filter-badge');
+  const filterName = document.getElementById('active-filter-name');
+  const resetFilterBtn = document.getElementById('reset-filter-btn');
+  const resetAllBtn = document.getElementById('reset-all-btn');
+
+  const items = Array.from(document.querySelectorAll('.product-item-wrapper')) as HTMLElement[];
+
+  let activeCategory = 'todos';
+  let searchQuery = '';
+  let activeSort = 'featured';
+
+  // Leer categoría desde los parámetros de la URL
+  function initFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('categoria');
+    if (catParam) {
+      activeCategory = catParam;
+      updateActiveTab(catParam);
+    }
+  }
+
+  function updateActiveTab(catId: string) {
+    tabButtons.forEach(btn => {
+      if ((btn as HTMLElement).dataset.categoryId === catId) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  function filterAndSortProducts() {
+    let visibleItems = items.filter(item => {
+      const itemCat = item.dataset.category || '';
+      const name = item.dataset.name || '';
+      const desc = item.dataset.desc || '';
+      const tags = item.dataset.tags || '';
+
+      const matchesCat = activeCategory === 'todos' || itemCat === activeCategory;
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch = !q || name.includes(q) || desc.includes(q) || tags.includes(q);
+
+      return matchesCat && matchesSearch;
+    });
+
+    // Ordenar elementos
+    visibleItems.sort((a, b) => {
+      const priceA = parseFloat(a.dataset.price || '0');
+      const priceB = parseFloat(b.dataset.price || '0');
+      const nameA = a.dataset.name || '';
+      const nameB = b.dataset.name || '';
+      const featA = a.dataset.featured === '1' ? 1 : 0;
+      const featB = b.dataset.featured === '1' ? 1 : 0;
+
+      if (activeSort === 'price-asc') return priceA - priceB;
+      if (activeSort === 'price-desc') return priceB - priceA;
+      if (activeSort === 'name-asc') return nameA.localeCompare(nameB);
+      // default: featured first
+      return featB - featA;
+    });
+
+    // Actualizar visualización en DOM
+    items.forEach(item => {
+      item.style.display = 'none';
+    });
+
+    visibleItems.forEach(item => {
+      item.style.display = 'block';
+      productsGrid?.appendChild(item);
+    });
+
+    // Actualizar estados
+    if (resultsCount) {
+      resultsCount.textContent = `Mostrando ${visibleItems.length} ${visibleItems.length === 1 ? 'producto' : 'productos'}`;
+    }
+
+    if (noResults && productsGrid) {
+      if (visibleItems.length === 0) {
+        noResults.style.display = 'block';
+        productsGrid.style.display = 'none';
+      } else {
+        noResults.style.display = 'none';
+        productsGrid.style.display = 'grid';
+      }
+    }
+
+    // Badge de filtro activo
+    if (filterBadge && filterName) {
+      if (activeCategory !== 'todos') {
+        filterBadge.style.display = 'inline-flex';
+        const activeBtn = document.querySelector(`.cat-tab-btn[data-category-id="${activeCategory}"]`);
+        filterName.textContent = activeBtn?.textContent || activeCategory;
+      } else {
+        filterBadge.style.display = 'none';
+      }
+    }
+  }
+
+  // Event Listeners
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const catId = (btn as HTMLElement).dataset.categoryId || 'todos';
+      activeCategory = catId;
+      updateActiveTab(catId);
+      
+      // Actualizar URL sin recargar
+      const url = new URL(window.location.href);
+      if (catId === 'todos') {
+        url.searchParams.delete('categoria');
+      } else {
+        url.searchParams.set('categoria', catId);
+      }
+      window.history.replaceState({}, '', url.toString());
+
+      filterAndSortProducts();
+    });
+  });
+
+  searchInput?.addEventListener('input', (e) => {
+    searchQuery = (e.target as HTMLInputElement).value;
+    if (clearSearchBtn) {
+      clearSearchBtn.style.display = searchQuery ? 'block' : 'none';
+    }
+    filterAndSortProducts();
+  });
+
+  clearSearchBtn?.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    searchQuery = '';
+    if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+    filterAndSortProducts();
+  });
+
+  sortSelect?.addEventListener('change', (e) => {
+    activeSort = (e.target as HTMLSelectElement).value;
+    filterAndSortProducts();
+  });
+
+  function resetAll() {
+    activeCategory = 'todos';
+    searchQuery = '';
+    if (searchInput) searchInput.value = '';
+    if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+    updateActiveTab('todos');
+    const url = new URL(window.location.href);
+    url.searchParams.delete('categoria');
+    window.history.replaceState({}, '', url.toString());
+    filterAndSortProducts();
+  }
+
+  resetFilterBtn?.addEventListener('click', resetAll);
+  resetAllBtn?.addEventListener('click', resetAll);
+
+  // Inicializar
+  initFromUrl();
+  filterAndSortProducts();
+</script>

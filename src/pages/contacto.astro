@@ -1,0 +1,291 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { STORE_CONFIG } from '../config';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+
+const faqs = [
+  {
+    q: '¿Cómo garantizan la discreción en los envíos?',
+    a: 'Todos los pedidos se despachan en cajas o sobres rígidos completamente sellados, sin cintas impresas, logos ni referencias a hierbas, bongs o parafernalia. El remitente es una razón social genérica y neutra.'
+  },
+  {
+    q: '¿Qué formas de pago aceptan en el Perú?',
+    a: 'Aceptamos transferencias directas por Yape, Plin, cuentas BCP, BBVA, Interbank y pago contra entrega disponible para Lima Metropolitana.'
+  },
+  {
+    q: '¿Hacen envíos a todo el Perú?',
+    a: 'Sí, realizamos despachos diarios a todo el Perú a través de Olva Courier, Shalom o motorizado express para Lima.'
+  },
+  {
+    q: '¿Los productos de vidrio son resistentes?',
+    a: 'Nuestros bongs y pipas están fabricados en vidrio borosilicato 3.3 de alta resistencia térmica (entre 5mm y 7mm de grosor según el modelo), ofreciendo máxima durabilidad.'
+  }
+];
+---
+
+<Layout 
+  title="Contacto y Asesoría 420 | Artículos para Hierbas Perú"
+  description="Contáctanos vía WhatsApp para pedidos, asesoría personalizada sobre cristalería, bongs, vaporizadores y envíos discretos en Perú."
+>
+  <div class="contact-page">
+    <div class="container container-narrow">
+      <nav class="breadcrumbs" aria-label="Navegación secundaria">
+        <a href="/">Inicio</a>
+        <span class="sep">/</span>
+        <span class="current">Contacto</span>
+      </nav>
+
+      <header class="contact-header">
+        <h1 class="contact-title">Estamos para asesorarte</h1>
+        <p class="contact-lead">
+          ¿Tienes consultas sobre compatibilidad de bongs, boquillas, vaporizadores o tiempos de entrega en Perú? Escríbenos directamente.
+        </p>
+      </header>
+
+      <!-- Canales Directos -->
+      <div class="channels-grid">
+        <div class="channel-card">
+          <div class="channel-icon">
+            <WhatsAppIcon size={24} fill="#22C55E" />
+          </div>
+          <h3 class="channel-title">WhatsApp Oficial Perú</h3>
+          <p class="channel-info">+{STORE_CONFIG.whatsappNumber}</p>
+          <p class="channel-sub">{STORE_CONFIG.contact.hours}</p>
+          <a 
+            href={`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent('¡Hola! Me comunico desde la sección de contacto de Artículos para Hierbas Perú.')}`} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-primary btn-sm btn-block"
+          >
+            Iniciar Chat por WhatsApp
+          </a>
+        </div>
+
+        <div class="channel-card">
+          <div class="channel-icon">
+            <svg class="icon-outline" viewBox="0 0 24 24" width="24" height="24">
+              <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <h3 class="channel-title">Envíos a todo el Perú</h3>
+          <p class="channel-info">100% Empaque Neutro</p>
+          <p class="channel-sub">Despachos diarios por Olva Courier, Shalom y motorizado en Lima.</p>
+          <a href="/productos" class="btn btn-secondary btn-sm btn-block">
+            Ir al Catálogo 420
+          </a>
+        </div>
+      </div>
+
+      <!-- Sección de Preguntas Frecuentes (FAQ) -->
+      <section class="faq-section" id="faq">
+        <h2 class="faq-heading">Preguntas Frecuentes</h2>
+
+        <div class="faq-list">
+          {faqs.map((faq, index) => (
+            <details class="faq-item" open={index === 0}>
+              <summary class="faq-question">
+                <span>{faq.q}</span>
+                <svg class="icon-outline faq-arrow" viewBox="0 0 24 24" width="18" height="18">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-page {
+    padding: 3rem 0 5rem 0;
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--color-accent);
+  }
+
+  .breadcrumbs .sep {
+    color: var(--border-color);
+  }
+
+  .breadcrumbs .current {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .contact-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .contact-title {
+    font-size: 2.35rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-lead {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Canales */
+  .channels-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .channel-card {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all var(--transition-fast);
+  }
+
+  .channel-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+  }
+
+  .channel-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--color-accent-border);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .channel-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .channel-info {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .channel-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding-top: 1rem;
+  }
+
+  .faq-heading {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .faq-item {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color var(--transition-fast);
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-accent);
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.975rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    list-style: none;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-arrow {
+    color: var(--color-accent);
+    transition: transform var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    border-top: 1px solid var(--border-light);
+    padding-top: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .channels-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-title {
+      font-size: 1.85rem;
+    }
+  }
+</style>

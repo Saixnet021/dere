@@ -1,0 +1,342 @@
+/* ==========================================================================
+   ARTÍCULOS PARA HIERBAS — SMOKE SHOP & 420 PERÚ (DARK BOTANICAL TEXTURE)
+   FONDO CON TEXTURA SEAMLESS DE HOJAS DE CANNABIS & PARAFERNALIA 420
+   REGLA ESTRICTA: CERO DEGRADADOS (NO GRADIENTS) EN TODO EL SITIO
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap');
+
+:root {
+  /* Paleta Dark Theme Premium 420 (Sin Degradados) */
+  --bg-primary: #080C09;          /* Fondo base ultra oscuro botánico */
+  --bg-secondary: #0F1611;        /* Superficies secundarias */
+  --bg-tertiary: #162219;         /* Superficies elevadas y hover */
+  --bg-subtle: rgba(17, 25, 19, 0.88); /* Fondos de tarjetas con textura visible */
+  --bg-accent-light: #122B1B;     /* Fondo de acento con tinte cannabis */
+
+  /* Color de Acento Verde Cannabis Neón / Esmeralda */
+  --color-accent: #22C55E;        /* Verde 420 vibrante */
+  --color-accent-hover: #16A34A;  /* Verde hover */
+  --color-accent-sage: #4ADE80;   /* Verde claro para destacados */
+  --color-accent-subtle: #143520;
+  --color-accent-border: #225232;
+
+  /* Textos */
+  --text-primary: #FFFFFF;        /* Blanco puro de alto contraste */
+  --text-secondary: #D1D5DB;      /* Gris claro legible */
+  --text-muted: #9CA3AF;          /* Gris medio */
+  --text-subtle: #6B7280;         /* Gris oscuro */
+  --text-on-accent: #052010;      /* Texto oscuro sobre verde neón */
+
+  /* Bordes y Líneas Finas */
+  --border-light: rgba(34, 197, 94, 0.12);
+  --border-color: #1E2E22;
+  --border-dark: #2A4230;
+  --border-accent: #22C55E;
+
+  /* Tipografía */
+  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Radios de Borde Redondeados */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Sombras Sutiles */
+  --shadow-subtle: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  --shadow-clean: 0 8px 24px 0 rgba(0, 0, 0, 0.6);
+  --shadow-drawer: -8px 0 36px rgba(0, 0, 0, 0.85);
+
+  /* Transiciones */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+
+  /* Layout */
+  --max-width: 1280px;
+  --header-height: 76px;
+}
+
+/* Reset y Base con Textura Botánica 420 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  background-image: url('/images/bg-pattern-420.svg');
+  background-repeat: repeat;
+  background-size: 260px 260px;
+  background-attachment: fixed;
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Contenedores */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Tipografía de Títulos */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.section-title-wrap {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+}
+
+.section-title {
+  font-size: 2.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Botones Dark 420 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.75rem;
+  font-size: 0.925rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--text-on-accent);
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+}
+
+.btn-outline {
+  background-color: rgba(18, 27, 20, 0.8);
+  color: var(--color-accent);
+  border-color: var(--color-accent-border);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-accent-light);
+  border-color: var(--color-accent);
+  color: var(--color-accent-sage);
+}
+
+.btn-secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--border-dark);
+  color: var(--text-primary);
+}
+
+.btn-sm {
+  padding: 0.5rem 1.15rem;
+  font-size: 0.825rem;
+}
+
+.btn-lg {
+  padding: 0.95rem 2.25rem;
+  font-size: 1.05rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Grids de Productos */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+  .section-title {
+    font-size: 1.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+}
+
+/* Formularios Dark */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.45rem;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: var(--text-subtle);
+}
+
+/* Iconos de línea fina */
+.icon-outline {
+  stroke-width: 1.75;
+  stroke: currentColor;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Toast Dark */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: 0.9rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-accent-border);
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-clean);
+  pointer-events: auto;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-icon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}

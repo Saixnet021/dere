@@ -1,0 +1,350 @@
+---
+import { STORE_CONFIG } from '../config';
+import Logo from './Logo.astro';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+---
+
+<footer class="site-footer">
+  <!-- Barra de Beneficios y Garantías -->
+  <div class="footer-guarantees">
+    <div class="container guarantees-grid">
+      <div class="guarantee-item">
+        <div class="guarantee-icon">
+          <svg class="icon-outline" viewBox="0 0 24 24" width="24" height="24">
+            <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+        <div>
+          <h4 class="guarantee-title">Empaque 100% Discreto</h4>
+          <p class="guarantee-desc">Envíos a todo el Perú en cajas selladas neutras sin marcas ni logos.</p>
+        </div>
+      </div>
+
+      <div class="guarantee-item">
+        <div class="guarantee-icon">
+          <svg class="icon-outline" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="9 12 11 14 15 10"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h4 class="guarantee-title">Calidad 420 Garantizada</h4>
+          <p class="guarantee-desc">Borosilicato 3.3 de grado médico y marcas originales garantizadas.</p>
+        </div>
+      </div>
+
+      <div class="guarantee-item">
+        <div class="guarantee-icon">
+          <WhatsAppIcon size={24} fill="#22C55E" />
+        </div>
+        <div>
+          <h4 class="guarantee-title">Atención Personalizada</h4>
+          <p class="guarantee-desc">Asesoría directa y toma de pedidos por WhatsApp en Perú.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido Principal del Footer -->
+  <div class="footer-main">
+    <div class="container footer-grid">
+      <!-- Columna 1: Marca y Valores -->
+      <div class="footer-col brand-col">
+        <a href="/" class="footer-logo" aria-label="Artículos para Hierbas">
+          <Logo width={230} height={35} />
+        </a>
+        <p class="footer-about">
+          Smoke Shop online especializado en parafernalia cannábica 420 en Perú. Bongs de borosilicato, vaporizadores, pipas y accesorios con envíos 100% discretos a Lima y provincias.
+        </p>
+        <div class="rex-partner-box">
+          <span class="rex-tag">Alianza Oficial:</span>
+          <span class="rex-name">En colaboración con <strong>Tienda de Rex Perú</strong></span>
+        </div>
+        <div class="footer-social-links">
+          <a href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" title="WhatsApp Perú">
+            <WhatsAppIcon size={16} fill="#22C55E" />
+            <span>WhatsApp Oficial Perú</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna 2: Categorías -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Categorías 420</h4>
+        <ul class="footer-links">
+          <li><a href="/productos?categoria=bongs">Bongs &amp; Percoladores</a></li>
+          <li><a href="/productos?categoria=vapes">Vaporizadores Herbales</a></li>
+          <li><a href="/productos?categoria=pipas">Pipas &amp; Bubblers</a></li>
+          <li><a href="/productos?categoria=rolling-papers">Rolling Papers &amp; Sedas</a></li>
+          <li><a href="/productos?categoria=filtros">Filtros &amp; Boquillas</a></li>
+          <li><a href="/productos?categoria=accesorios">Grinders &amp; Bandejas</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Información y Soporte -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Información</h4>
+        <ul class="footer-links">
+          <li><a href="/nosotros">Quiénes Somos</a></li>
+          <li><a href="/contacto">Contacto &amp; Asesoría</a></li>
+          <li><a href="/productos">Colección Tienda de Rex</a></li>
+          <li><a href="/carrito">Mi Carrito</a></li>
+          <li><a href="/checkout">Finalizar Pedido</a></li>
+          <li><a href="/contacto#faq">Preguntas Frecuentes</a></li>
+          <li><a href="/contacto#envios">Envíos a todo el Perú</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Contacto Directo -->
+      <div class="footer-col contact-col">
+        <h4 class="footer-heading">Atención en Perú</h4>
+        <p class="contact-info">¿Tienes dudas o buscas asesoría sobre bongs o vaporizadores?</p>
+        <a href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm contact-btn">
+          <WhatsAppIcon size={16} fill="#052010" />
+          <span>Chatear al WhatsApp</span>
+        </a>
+        <div class="age-warning">
+          <span class="age-badge">+18</span>
+          <span class="age-text">Venta exclusiva para mayores de edad en Perú.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra Inferior de Copyright -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p class="copyright-text">
+        © {new Date().getFullYear()} Artículos para Hierbas &bull; Smoke Shop Perú 420 &bull; Tienda de Rex.
+      </p>
+      <div class="footer-badges">
+        <span class="footer-pill">Tienda de Rex Perú</span>
+        <span class="footer-pill">Envíos a Lima y Provincias</span>
+        <span class="footer-pill">Pago Contra Entrega / Yape / Plin</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+  }
+
+  /* Garantías */
+  .footer-guarantees {
+    border-bottom: 1px solid var(--border-color);
+    padding: 2.5rem 0;
+    background-color: var(--bg-subtle);
+  }
+
+  .guarantees-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .guarantee-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .guarantee-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-accent-border);
+    background-color: var(--bg-accent-light);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .guarantee-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .guarantee-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* Footer Principal */
+  .footer-main {
+    padding: 4rem 0 3rem 0;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+  }
+
+  .brand-col {
+    padding-right: 1.5rem;
+  }
+
+  .footer-logo {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .footer-about {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .rex-partner-box {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 0.85rem;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.25rem;
+  }
+
+  .rex-tag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: 0.15rem;
+  }
+
+  .rex-name {
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+  }
+
+  .footer-heading {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent);
+  }
+
+  .contact-info {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .contact-btn {
+    width: 100%;
+    margin-bottom: 1.25rem;
+  }
+
+  .age-warning {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-subtle);
+  }
+
+  .age-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--color-accent);
+    color: var(--text-on-accent);
+    border-radius: var(--radius-pill);
+  }
+
+  .age-text {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  /* Footer Bottom */
+  .footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+    background-color: var(--bg-primary);
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .copyright-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .footer-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-pill {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+  }
+
+  @media (max-width: 992px) {
+    .guarantees-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+    .footer-bottom-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

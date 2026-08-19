@@ -1,0 +1,18 @@
+{
+  "name": "articulo-para-hierbas",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro preview --host",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.2.3",
+    "nanostores": "^1.5.1"
+  }
+}

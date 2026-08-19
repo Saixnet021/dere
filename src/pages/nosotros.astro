@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { STORE_CONFIG } from '../config';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+---
+
+<Layout 
+  title="Quiénes Somos | Smoke Shop & Parafernalia 420 Perú"
+  description="Conoce la filosofía, estándares de cristalería borosilicato y compromiso de discreción en envíos de Artículos para Hierbas en Perú."
+>
+  <div class="about-page">
+    <div class="container container-narrow">
+      <nav class="breadcrumbs" aria-label="Navegación secundaria">
+        <a href="/">Inicio</a>
+        <span class="sep">/</span>
+        <span class="current">Quiénes Somos</span>
+      </nav>
+
+      <header class="about-header">
+        <h1 class="about-title">Elevando el estándar de la parafernalia 420 en el Perú</h1>
+        <p class="about-lead">
+          En <strong>Artículos para Hierbas</strong> ofrecemos cristalería de borosilicato 3.3 de grado médico, vaporizadores herbales originales y accesorios botánicos de alto rendimiento con empaques 100% discretos.
+        </p>
+      </header>
+
+      <div class="about-content">
+        <section class="about-section">
+          <h2 class="section-subheading">Nuestra Misión</h2>
+          <p>
+            Nacimos con el propósito de ofrecer a la comunidad cannábica y botánica en el Perú una alternativa confiable, sofisticada y transparente en artículos y parafernalia. Seleccionamos únicamente piezas fabricadas con vidrio borosilicato resistente a choques térmicos, aluminio aeroespacial anodizado 6061, papeles sin aditivos químicos y sistemas de filtración de carbón vegetal activo.
+          </p>
+        </section>
+
+        <section class="about-section pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg class="icon-outline" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Calidad 420 Garantizada</h3>
+            <p class="pillar-desc">Trabajamos con marcas oficiales como Raw, ActiTube, Roor, Elements y Purize. Cero imitaciones ni materiales tóxicos.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg class="icon-outline" viewBox="0 0 24 24" width="24" height="24">
+                <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Empaque 100% Neutro en Perú</h3>
+            <p class="pillar-desc">Tus paquetes viajan en cajas selladas, lisas y sin ninguna referencia, texto ni logotipo que revele su contenido a Lima y provincias.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <WhatsAppIcon size={24} fill="#22C55E" />
+            </div>
+            <h3 class="pillar-title">Atención Personalizada</h3>
+            <p class="pillar-desc">Resolvemos cada duda directamente por WhatsApp. Te ayudamos a elegir la pieza adecuada según tu setup.</p>
+          </div>
+        </section>
+
+        <section class="about-section cta-about">
+          <h2 class="section-subheading">¿Tienes alguna pregunta o buscas un accesorio específico?</h2>
+          <p>Estamos disponibles todos los días para asesorarte de manera personalizada en Perú.</p>
+          <div class="cta-btns">
+            <a href="/productos" class="btn btn-primary">Ver Catálogo Completo</a>
+            <a href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <WhatsAppIcon size={18} fill="#22C55E" />
+              <span>Hablar por WhatsApp</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .about-page {
+    padding: 3rem 0 5rem 0;
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--color-accent);
+  }
+
+  .breadcrumbs .sep {
+    color: var(--border-color);
+  }
+
+  .breadcrumbs .current {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .about-header {
+    margin-bottom: 3rem;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin: 0.75rem 0 1rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  .about-lead {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .section-subheading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .about-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .pillar-card {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    transition: border-color var(--transition-fast);
+  }
+
+  .pillar-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .pillar-icon {
+    color: var(--color-accent);
+    background-color: var(--bg-accent-light);
+    border: 1px solid var(--color-accent-border);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-pill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pillar-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .pillar-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .cta-about {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .cta-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+</style>

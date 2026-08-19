@@ -1,0 +1,130 @@
+---
+interface Props {
+  className?: string;
+  width?: number;
+  height?: number;
+}
+
+const { className = "site-logo-wrap", width = 250, height = 44 } = Astro.props;
+---
+
+<div class={`alien-brand-logo ${className}`}>
+  <!-- Marcianito 420 Avatar Icon -->
+  <div class="alien-avatar-box">
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 40 40" 
+      width="34" 
+      height="34" 
+      fill="none"
+      class="alien-head-svg"
+      aria-hidden="true"
+    >
+      <!-- Beanie / Gorro -->
+      <path d="M7 16 C7 7 13 4 20 4 C27 4 33 7 33 16 Z" fill="#132417" stroke="#22C55E" stroke-width="1.8" />
+      <!-- Beanie Fold -->
+      <rect x="5" y="14" width="30" height="5" rx="2.5" fill="#1A3320" stroke="#22C55E" stroke-width="1.5" />
+      <!-- Hoja de Cannabis en el Gorro -->
+      <path d="M20 7 C19 10 19 12 20 14 C21 12 21 10 20 7 Z" fill="#22C55E" />
+      <path d="M20 10 C17 8 15 10 14 12 C16 13 18 12 20 11 Z" fill="#22C55E" />
+      <path d="M20 10 C23 8 25 10 26 12 C24 13 22 12 20 11 Z" fill="#22C55E" />
+      
+      <!-- Rostro Alien Verde Neón -->
+      <path d="M8 18 C7 25 11 36 20 37 C29 36 33 25 32 18 Z" fill="#22C55E" stroke="#4ADE80" stroke-width="1.5" />
+      
+      <!-- Gafas de Sol Estilo Streetwear -->
+      <path d="M9 22 C11 20 17 20 19 23 C19 27 12 28 9 25 Z" fill="#090D0A" stroke="#000000" stroke-width="1" />
+      <path d="M31 22 C29 20 23 20 21 23 C21 27 28 28 31 25 Z" fill="#090D0A" stroke="#000000" stroke-width="1" />
+      <!-- Puente de Lentes -->
+      <path d="M18 22 L22 22" stroke="#090D0A" stroke-width="2" stroke-linecap="round" />
+      
+      <!-- Nariz Alien y Sonrisa -->
+      <circle cx="18.5" cy="28" r="0.8" fill="#0E421E" />
+      <circle cx="21.5" cy="28" r="0.8" fill="#0E421E" />
+      <path d="M17 31 Q20 34 23 31" stroke="#0E421E" stroke-width="1.4" stroke-linecap="round" fill="none" />
+      
+      <!-- Porrito / Joint 420 -->
+      <path d="M22 31 L29 33" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+      <circle cx="29.5" cy="33.2" r="1.2" fill="#EF4444" />
+      <!-- Humo 420 Sutil -->
+      <path d="M30 32 Q32 29 30 26 Q32 23 34 21" stroke="#4ADE80" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.85" />
+    </svg>
+  </div>
+
+  <!-- Textos de Marca -->
+  <div class="brand-text-col">
+    <div class="brand-title-row">
+      <span class="brand-word-white">ARTÍCULOS</span>
+      <span class="brand-word-green">HIERBAS</span>
+    </div>
+    <span class="brand-sub-tag">SMOKE SHOP &bull; PERÚ 420</span>
+  </div>
+</div>
+
+<style>
+  .alien-brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    user-select: none;
+  }
+
+  .alien-avatar-box {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #0E1610;
+    border: 1.5px solid #22C55E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.35);
+    transition: transform var(--transition-fast);
+  }
+
+  .alien-brand-logo:hover .alien-avatar-box {
+    transform: rotate(-8deg) scale(1.1);
+    box-shadow: 0 0 18px rgba(34, 197, 94, 0.6);
+  }
+
+  .alien-head-svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand-text-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .brand-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+  }
+
+  .brand-word-white {
+    color: #FFFFFF;
+  }
+
+  .brand-word-green {
+    color: var(--color-accent);
+  }
+
+  .brand-sub-tag {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: #9CA3AF;
+    margin-top: 0.15rem;
+  }
+</style>

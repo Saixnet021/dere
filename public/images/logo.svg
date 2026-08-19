@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="42" viewBox="0 0 280 42" fill="none">
+  <!-- Marcianito 420 Avatar -->
+  <g transform="translate(4, 2)">
+    <!-- Outer Glow Circle -->
+    <circle cx="19" cy="19" r="18" fill="#0E1610" stroke="#22C55E" stroke-width="1.5" />
+    <!-- Beanie -->
+    <path d="M9 16 C9 8 14 5 19 5 C24 5 29 8 29 16 Z" fill="#132417" stroke="#22C55E" stroke-width="1.2" />
+    <rect x="7" y="14" width="24" height="4" rx="2" fill="#1A3320" stroke="#22C55E" stroke-width="1" />
+    <!-- Mini Weed Leaf -->
+    <path d="M19 8 C18 10 18 12 19 13 C20 12 20 10 19 8 Z" fill="#22C55E" />
+    <!-- Face -->
+    <path d="M10 17 C9 23 12 32 19 33 C26 32 29 23 28 17 Z" fill="#22C55E" />
+    <!-- Sunglasses -->
+    <path d="M10 20 C12 18 16 18 18 21 C18 24 13 25 10 23 Z" fill="#090D0A" />
+    <path d="M28 20 C26 18 22 18 20 21 C20 24 25 25 28 23 Z" fill="#090D0A" />
+    <!-- Joint -->
+    <path d="M20 28 L26 30" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" />
+    <circle cx="26.5" cy="30.2" r="1" fill="#EF4444" />
+  </g>
+
+  <!-- Typography Brand -->
+  <text x="48" y="21" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="15" font-weight="900" letter-spacing="1">
+    <tspan fill="#FFFFFF">ARTÍCULOS </tspan>
+    <tspan fill="#22C55E">HIERBAS</tspan>
+  </text>
+  <text x="49" y="34" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="7.5" font-weight="800" letter-spacing="2.5" fill="#9CA3AF">SMOKE SHOP &bull; PERÚ 420</text>
+</svg>

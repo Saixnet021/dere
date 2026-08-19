@@ -1,0 +1,614 @@
+[
+  {
+    "id": "fil-001",
+    "name": "Filtros de Carbón Activado ActiTube 8mm",
+    "slug": "filtros-carbon-activado-actitube-8mm",
+    "category": "filtros",
+    "categoryName": "Filtros",
+    "price": 25,
+    "originalPrice": 30,
+    "rating": 4.9,
+    "reviewsCount": 38,
+    "inStock": true,
+    "featured": true,
+    "image": "/images/products/filtros-actitube.jpg",
+    "description": "Filtros con carbón activado de origen vegetal que retienen impurezas y alquitrán sin alterar el sabor ni la potencia. Humo más suave, fresco y limpio.",
+    "shortDescription": "Filtros con carbón activado vegetal. Pack x 50 unidades de 8mm.",
+    "specs": {
+      "Material": "Carbón activado vegetal y tapas cerámicas",
+      "Diámetro": "8 mm",
+      "Contenido": "50 filtros por caja",
+      "Reutilizable": "Hasta 2-3 usos según intensidad",
+      "Origen": "Alemania"
+    },
+    "tags": [
+      "carbón activado",
+      "humo suave",
+      "salud",
+      "filtros"
+    ]
+  },
+  {
+    "id": "fil-002",
+    "name": "Tips de Vidrio Borosilicato Reutilizables Roor 8mm",
+    "slug": "tips-vidrio-borosilicato-roor-8mm",
+    "category": "filtros",
+    "categoryName": "Filtros",
+    "price": 22,
+    "originalPrice": null,
+    "rating": 4.8,
+    "reviewsCount": 24,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/tip-vidrio-roor.jpg",
+    "description": "Boquillas reutilizables de vidrio borosilicato alemán de alta resistencia térmica. Muescas internas que impiden el paso de residuos a la boca y enfrían el humo.",
+    "shortDescription": "Boquillas de vidrio de borosilicato alemán de 8mm. Reutilizables y lavables.",
+    "specs": {
+      "Material": "Vidrio Borosilicato 3.3 de grado médico",
+      "Diámetro": "8 mm",
+      "Longitud": "30 mm",
+      "Presentación": "Pack de 3 unidades en estuche metálico",
+      "Limpieza": "Fácil de limpiar con alcohol isopropílico"
+    },
+    "tags": [
+      "vidrio",
+      "reutilizable",
+      "cero residuos",
+      "ecológico"
+    ]
+  },
+  {
+    "id": "fil-003",
+    "name": "Boquillas de Madera Orgánica Purize XTRA Slim",
+    "slug": "boquillas-madera-organica-purize-xtra-slim",
+    "category": "filtros",
+    "categoryName": "Filtros",
+    "price": 28,
+    "originalPrice": null,
+    "rating": 4.7,
+    "reviewsCount": 19,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/filtros-purize.jpg",
+    "description": "Filtros delgados de carbón de coco activo con tapas cerámicas en ambos extremos. Elaborados con celulosa orgánica biodegradable.",
+    "shortDescription": "Filtros slim de 5.9mm con carbón de coco. Pack x 33 unidades.",
+    "specs": {
+      "Material": "Carbón de coco activado y tapas cerámicas",
+      "Diámetro": "5.9 mm (XTRA Slim)",
+      "Contenido": "33 unidades en bolsa hermética zip",
+      "Biodegradable": "100% ecológico"
+    },
+    "tags": [
+      "slim",
+      "coco",
+      "biodegradable",
+      "purize"
+    ]
+  },
+  {
+    "id": "rol-001",
+    "name": "Papelillos Bob Marley King Size Slim Organic Hemp",
+    "slug": "papelillos-raw-black-king-size-slim",
+    "category": "rolling-papers",
+    "categoryName": "Rolling Papers",
+    "price": 7.5,
+    "originalPrice": 9,
+    "rating": 5,
+    "reviewsCount": 86,
+    "inStock": true,
+    "featured": true,
+    "image": "/images/products/bob-marley-king-size-slim-organic-hemp-peru-2.jpg",
+    "description": "El papel de liar más fino y de combustión más lenta de Raw. Prensado doble para un grosor ultrafino que permite disfrutar 100% de los terpenos naturales sin sabor a papel.",
+    "shortDescription": "Papel ultrafino sin blanquear King Size Slim. 32 hojas + 32 tips.",
+    "specs": {
+      "Material": "Fibras naturales de lino y cáñamo sin blanquear",
+      "Goma": "Goma arábiga natural de acacia",
+      "Tamaño": "110 mm x 44 mm (King Size Slim)",
+      "Hojas": "32 papeles + 32 boquillas de cartón",
+      "Combustión": "Ultra lenta con marca de agua entrecruzada patentada"
+    },
+    "tags": [
+      "raw",
+      "papelillos",
+      "ultrafino",
+      "sin blanquear",
+      "king size"
+    ]
+  },
+  {
+    "id": "rol-002",
+    "name": "Papelillos Lion Rolling Circus Hemp Terpenos Saborizados",
+    "slug": "papelillos-elements-arroz-king-size",
+    "category": "rolling-papers",
+    "categoryName": "Rolling Papers",
+    "price": 8.5,
+    "originalPrice": 10,
+    "rating": 4.9,
+    "reviewsCount": 42,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/Hemp-Rolling-Paper-Orange-Peru.jpg",
+    "description": "Papelillos elaborados 100% con puro papel de arroz. Arde casi sin dejar cenizas, únicamente una fina línea blanca de goma de azúcar caramelizada.",
+    "shortDescription": "Puro papel de arroz con combustión ultra limpia. 33 hojas.",
+    "specs": {
+      "Material": "Papel de arroz natural",
+      "Goma": "Goma de azúcar natural",
+      "Tamaño": "King Size Slim (110 mm)",
+      "Hojas": "33 hojas por librito",
+      "Ceniza": "Residuo casi nulo"
+    },
+    "tags": [
+      "elements",
+      "arroz",
+      "king size",
+      "limpio"
+    ]
+  },
+  {
+    "id": "rol-003",
+    "name": "Conos King Palm Real Berry Terps Pre-Rolados",
+    "slug": "conos-pre-rolados-raw-classic-1-1-4",
+    "category": "rolling-papers",
+    "categoryName": "Rolling Papers",
+    "price": 12,
+    "originalPrice": 15,
+    "rating": 4.8,
+    "reviewsCount": 31,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/KINGPALMBERRYTERPS.webp",
+    "description": "Conos listos para rellenar, hechos con el clásico papel sin refinar de RAW con punta de filtro cónica ya incorporada.",
+    "shortDescription": "6 conos pre-armados con boquilla incluida de tamaño 1 1/4.",
+    "specs": {
+      "Material": "Cáñamo sin blanquear",
+      "Tamaño": "1 1/4 (84 mm)",
+      "Cantidad": "6 conos por paquete",
+      "Filtro": "Boquilla en W integrada"
+    },
+    "tags": [
+      "conos",
+      "pre-rolados",
+      "raw",
+      "fácil"
+    ]
+  },
+  {
+    "id": "bng-001",
+    "name": "Bong Straight Tube Roor Germany 45cm Borosilicato",
+    "slug": "bong-vidrio-borosilicato-minimalist-beaker-30cm",
+    "category": "bongs",
+    "categoryName": "Bongs",
+    "price": 185,
+    "originalPrice": 220,
+    "rating": 4.9,
+    "reviewsCount": 54,
+    "inStock": true,
+    "featured": true,
+    "image": "/images/products/bong-straight-tube-roor-germany-original-45cm-3.jpeg",
+    "description": "Bong clásico estilo matraz de laboratorio (Beaker) fabricado en vidrio borosilicato de 5mm de grosor de alta resistencia térmica. Incluye atrapa-hielo de 3 puntas (Ice-catcher) para caladas ultra frescas.",
+    "shortDescription": "Bong Beaker en borosilicato de 5mm con atrapa-hielo. Altura 30cm.",
+    "specs": {
+      "Material": "Vidrio Borosilicato 3.3 de 5mm",
+      "Altura": "30 cm",
+      "Diámetro de base": "11 cm",
+      "Junta / Entrada": "14.5 mm hembra",
+      "Incluye": "Downstem difusor ranurado de 11cm + Quemador de 14mm macho",
+      "Atrapa-hielo": "Sí, triple muesca"
+    },
+    "tags": [
+      "bong",
+      "vidrio",
+      "borosilicato",
+      "beaker",
+      "ice catcher"
+    ]
+  },
+  {
+    "id": "bng-002",
+    "name": "Bong Recycler Purple Wigwag con Triple Percolador",
+    "slug": "bong-percolador-doble-honeycomb-35cm",
+    "category": "bongs",
+    "categoryName": "Bongs",
+    "price": 165,
+    "originalPrice": 195,
+    "rating": 5,
+    "reviewsCount": 29,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/bong_recycler_purple_wigwag.jpeg",
+    "description": "Bong de alto rendimiento con doble disco de percolación tipo panal de abejas (Honeycomb) que divide el humo en cientos de microburbujas para una filtración y enfriamiento inigualables.",
+    "shortDescription": "Doble filtración Honeycomb en vidrio de 5mm. Altura 35cm.",
+    "specs": {
+      "Material": "Vidrio borosilicato de alta pureza",
+      "Altura": "35 cm",
+      "Percolación": "Doble disco Honeycomb + Splashguard",
+      "Entrada": "18.8 mm hembra con adaptador a 14.5 mm",
+      "Quemador": "Quemador tipo embudo con manija de seguridad"
+    },
+    "tags": [
+      "bong",
+      "percolador",
+      "honeycomb",
+      "filtración",
+      "premium"
+    ]
+  },
+  {
+    "id": "bng-003",
+    "name": "Bong Beaker Love Rosa Borosilicato 30cm",
+    "slug": "mini-bong-viaje-vidrio-grueso-16cm",
+    "category": "bongs",
+    "categoryName": "Bongs",
+    "price": 95,
+    "originalPrice": 120,
+    "rating": 4.6,
+    "reviewsCount": 18,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/bong_beaker_love_rosa.jpeg",
+    "description": "Bong portátil de tamaño compacto, perfecto para viajes o sesiones individuales rápidas. Base ancha muy estable y quemador removible de 10mm.",
+    "shortDescription": "Bong portátil y compacto en borosilicato. Altura 16cm.",
+    "specs": {
+      "Material": "Vidrio Borosilicato 4mm",
+      "Altura": "16 cm",
+      "Junta": "10 mm macho",
+      "Portabilidad": "Alta, cabe en cualquier estuche"
+    },
+    "tags": [
+      "mini bong",
+      "portátil",
+      "viaje",
+      "discreto"
+    ]
+  },
+  {
+    "id": "pip-001",
+    "name": "Mini Rig Matrix Pastel Violet Vidrio Grueso",
+    "slug": "pipa-vidrio-soplado-spoon-classic-10cm",
+    "category": "pipas",
+    "categoryName": "Pipas",
+    "price": 75,
+    "originalPrice": 90,
+    "rating": 4.8,
+    "reviewsCount": 63,
+    "inStock": true,
+    "featured": true,
+    "image": "/images/products/mini_rig_matrix_Pastel_Violet.jpeg",
+    "description": "Pipa de mano estilo cuchara (Spoon pipe) elaborada en vidrio soplado pesado de borosilicato. Posee carburador lateral (carb hole) para regular el flujo de aire y cazoleta profunda.",
+    "shortDescription": "Pipa clásica spoon de vidrio grueso con carburador lateral. 10cm.",
+    "specs": {
+      "Material": "Vidrio soplado térmico 4mm",
+      "Longitud": "10 cm",
+      "Carburador": "Lateral izquierdo",
+      "Forma": "Spoon tradicional con boquilla plana"
+    },
+    "tags": [
+      "pipa",
+      "vidrio",
+      "spoon",
+      "clásica",
+      "mano"
+    ]
+  },
+  {
+    "id": "pip-002",
+    "name": "Mini Rig Matrix Blue Color con Difusor",
+    "slug": "pipa-plegable-metal-madera-nogal",
+    "category": "pipas",
+    "categoryName": "Pipas",
+    "price": 75,
+    "originalPrice": 90,
+    "rating": 4.9,
+    "reviewsCount": 41,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/mini_rig_matrix_blue_color.jpeg",
+    "description": "Elegante pipa de bolsillo construida con cuerpo de aleación de zinc anodizado y cubierta magnética de madera natural de nogal. Totalmente desmontable para una limpieza profunda.",
+    "shortDescription": "Pipa magnética con tapa de nogal y cuerpo metálico. Antiolor.",
+    "specs": {
+      "Material": "Aleación de zinc + Madera natural de nogal",
+      "Sistema": "Cierre magnético deslizante",
+      "Longitud": "9.5 cm",
+      "Limpieza": "Desarmable en 3 piezas sin herramientas"
+    },
+    "tags": [
+      "pipa",
+      "madera",
+      "metal",
+      "discreta",
+      "bolsillo"
+    ]
+  },
+  {
+    "id": "pip-003",
+    "name": "Bong Rig Vidrio Soplado Elefante Peruano 420",
+    "slug": "pipa-bubbler-vidrio-difusor-13cm",
+    "category": "pipas",
+    "categoryName": "Pipas",
+    "price": 85,
+    "originalPrice": 110,
+    "rating": 4.7,
+    "reviewsCount": 22,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/bong-rig-vidrio-soplado-elefante-peruano.jpeg",
+    "description": "La combinación perfecta entre la portabilidad de una pipa de mano y el filtrado por agua de un bong. Tallo curvado ergonómico que evita el retorno de agua a la boca.",
+    "shortDescription": "Pipa con filtración por agua y difusor interno. 13cm.",
+    "specs": {
+      "Material": "Borosilicato 3.3",
+      "Altura": "13 cm",
+      "Filtración": "Difusor ranurado sumergido",
+      "Boquilla": "Curva ergonómica"
+    },
+    "tags": [
+      "bubbler",
+      "agua",
+      "filtración",
+      "pipa"
+    ]
+  },
+  {
+    "id": "vap-001",
+    "name": "Set Slurper 710 Green Showerhead Espacial",
+    "slug": "vaporizador-xmax-v3-pro-conveccion",
+    "category": "vapes",
+    "categoryName": "Vapes",
+    "price": 145,
+    "originalPrice": 180,
+    "rating": 5,
+    "reviewsCount": 77,
+    "inStock": true,
+    "featured": true,
+    "image": "/images/products/set_slurper_710_green_showerhead.jpeg",
+    "description": "Vaporizador herbal portátil con calentamiento por convección pura. Permite seleccionar modo On-Demand o Sesión. Pantalla OLED con control grado a grado (100°C a 220°C), batería 18650 intercambiable y carga rápida USB-C.",
+    "shortDescription": "Vaporizador herbal por convección pura. Batería intercambiable 18650.",
+    "specs": {
+      "Tecnología": "Convección 100%",
+      "Rango de Temperatura": "100°C - 220°C (grado a grado)",
+      "Batería": "18650 de 2600mAh (removible)",
+      "Carga": "USB Tipo C (carga rápida)",
+      "Pantalla": "OLED de alta nitidez",
+      "Tiempo de calentamiento": "15 segundos"
+    },
+    "tags": [
+      "vaporizador",
+      "convección",
+      "xmax",
+      "vape",
+      "herbal"
+    ]
+  },
+  {
+    "id": "vap-002",
+    "name": "Set Matrix Diamond Loop Banger Cuarzo 710",
+    "slug": "vaporizador-dynavap-the-m-plus-acero",
+    "category": "vapes",
+    "categoryName": "Vapes",
+    "price": 135,
+    "originalPrice": 160,
+    "rating": 4.9,
+    "reviewsCount": 58,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/set_matrix_diamond_loop_banger.jpeg",
+    "description": "Extractor térmico analógico sin baterías fabricado en acero inoxidable de grado quirúrgico. La tapa 'Captive Cap' emite un sonido 'click' audible cuando alcanza la temperatura exacta de extracción.",
+    "shortDescription": "Vaporizador mecánico sin baterías en acero quirúrgico. Clic sonoro.",
+    "specs": {
+      "Material": "Acero inoxidable grado médico 316",
+      "Calentamiento": "Por soplete de butano o calentador de inducción",
+      "Indicador térmico": "Clic acústico bimetálico",
+      "Dimensiones": "92 mm de largo x 10 mm de diámetro",
+      "Origen": "Hecho en USA"
+    },
+    "tags": [
+      "dynavap",
+      "sin batería",
+      "acero",
+      "manual",
+      "analógico"
+    ]
+  },
+  {
+    "id": "enc-001",
+    "name": "Soplete Torch Clipper Metal Llama Regulable",
+    "slug": "soplete-torch-clipper-metal-llama-regulable",
+    "category": "encendedores",
+    "categoryName": "Encendedores",
+    "price": 35,
+    "originalPrice": 42,
+    "rating": 4.9,
+    "reviewsCount": 49,
+    "inStock": true,
+    "featured": true,
+    "image": "/images/products/soplete-clipper-metal.jpg",
+    "description": "Encendedor tipo soplete con cuerpo metálico macizo y llama jet turbo resistente a vientos fuertes. Ideal para encender bongs, pipas y vaporizadores analógicos tipo DynaVap.",
+    "shortDescription": "Encendedor soplete metálico con llama jet anti-viento recargable.",
+    "specs": {
+      "Material": "Metal cepillado color titanio",
+      "Tipo de llama": "Jet azul concentrada de 1300°C",
+      "Regulación": "Rueda inferior de intensidad",
+      "Recargable": "Gas butano universal",
+      "Incluye": "Caja metálica de regalo"
+    },
+    "tags": [
+      "soplete",
+      "torch",
+      "clipper",
+      "metal",
+      "jet"
+    ]
+  },
+  {
+    "id": "enc-002",
+    "name": "Encendedor Clipper Clásico Metal Matte Green",
+    "slug": "encendedor-clipper-clasico-matte-sage",
+    "category": "encendedores",
+    "categoryName": "Encendedores",
+    "price": 8,
+    "originalPrice": null,
+    "rating": 4.8,
+    "reviewsCount": 92,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/clipper-sage.jpg",
+    "description": "El clásico e icónico encendedor Clipper en acabado matte soft-touch. Incluye el sistema de piedra removible que funciona como prensador de enrolado.",
+    "shortDescription": "Clipper recargable con prensador integrado y acabado matte.",
+    "specs": {
+      "Acabado": "Matte suave al tacto",
+      "Sistema de piedra": "Intercambiable y prensador integrado",
+      "Válvula": "Recargable por la base",
+      "Seguridad": "Cumple con norma ISO 9994"
+    },
+    "tags": [
+      "clipper",
+      "recargable",
+      "prensador",
+      "encendedor"
+    ]
+  },
+  {
+    "id": "enc-003",
+    "name": "Mecha de Cáñamo Orgánico Hemp Wick Perú 6m",
+    "slug": "mecha-canamo-organico-raw-hemp-wick-6m",
+    "category": "encendedores",
+    "categoryName": "Encendedores",
+    "price": 14,
+    "originalPrice": 18,
+    "rating": 4.9,
+    "reviewsCount": 35,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/hempwick-peru-2.png",
+    "description": "Cuerda de cáñamo 100% orgánico recubierta con cera pura de abejas. Permite encender bongs y pipas a menor temperatura eliminando por completo la inhalación de gas butano.",
+    "shortDescription": "Cáñamo orgánico con cera de abejas. Rollo de 6 metros.",
+    "specs": {
+      "Material": "Cáñamo cultivado sin pesticidas + Cera natural",
+      "Longitud": "6 metros (20 pies)",
+      "Beneficio": "Cero sabor a gas butano",
+      "Combustión": "Llama suave y uniforme"
+    },
+    "tags": [
+      "hemp wick",
+      "cáñamo",
+      "raw",
+      "sin butano",
+      "natural"
+    ]
+  },
+  {
+    "id": "acc-001",
+    "name": "Carb Cap OVNI Empire Glass Works Alien UV",
+    "slug": "grinder-aluminio-aeroespacial-4-partes-63mm",
+    "category": "accesorios",
+    "categoryName": "Accesorios",
+    "price": 55,
+    "originalPrice": 70,
+    "rating": 5,
+    "reviewsCount": 104,
+    "inStock": true,
+    "featured": true,
+    "image": "/images/products/carb_cap_ovni_empire_glass_works_uv_4.png",
+    "description": "Triturador mecanizado en un solo bloque de aluminio aeroespacial anodizado. Dientes curvados en forma de diamante que cortan sin aplastar, malla tamizadora de acero inoxidable y raspador incluido.",
+    "shortDescription": "Grinder CNC de 4 piezas y 63mm con tamiz y cierre magnético.",
+    "specs": {
+      "Material": "Aluminio 6061 de grado aeroespacial",
+      "Diámetro": "63 mm (Large)",
+      "Piezas": "4 partes / 3 compartimentos",
+      "Dientes": "32 dientes trapezoidales diamante",
+      "Incluye": "Espátula raspadora de kief"
+    },
+    "tags": [
+      "grinder",
+      "triturador",
+      "aluminio",
+      "4 partes",
+      "tamiz"
+    ]
+  },
+  {
+    "id": "acc-002",
+    "name": "Bandeja de Armado Metálica Minimalista Dark 27x16cm",
+    "slug": "bandeja-armado-metal-minimalista-blanca",
+    "category": "accesorios",
+    "categoryName": "Accesorios",
+    "price": 26,
+    "originalPrice": null,
+    "rating": 4.8,
+    "reviewsCount": 27,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/bandeja-metal-blanca.jpg",
+    "description": "Bandeja de liar con bordes redondeados elevados que evitan el desperdicio de material. Acabado esmaltado ultra liso fácil de limpiar.",
+    "shortDescription": "Bandeja de metal resistente con esquinas redondeadas. 27 x 16 cm.",
+    "specs": {
+      "Material": "Hojalata de alta densidad con acabado esmaltado",
+      "Dimensiones": "27.5 cm x 17.5 cm x 2.5 cm",
+      "Bordes": "Curvados sin esquinas filosas",
+      "Limpieza": "Superficie antiadherente lavable"
+    },
+    "tags": [
+      "bandeja",
+      "metal",
+      "armado",
+      "enrolar",
+      "organizador"
+    ]
+  },
+  {
+    "id": "acc-003",
+    "name": "Contenedor Hermético Antiolor UV Vidrio 250ml",
+    "slug": "contenedor-hermetico-antiolor-uv-vidrio-250ml",
+    "category": "accesorios",
+    "categoryName": "Accesorios",
+    "price": 32,
+    "originalPrice": null,
+    "rating": 4.9,
+    "reviewsCount": 33,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/frasco-uv-250ml.jpg",
+    "description": "Frasco de vidrio violeta oscuro biofotónico que bloquea la luz visible degradante permitiendo únicamente el paso de rayos UVA e infrarrojos para conservar y curar flores.",
+    "shortDescription": "Frasco de vidrio biofotónico antiolor y bloqueador UV de 250ml.",
+    "specs": {
+      "Material": "Vidrio violeta biofotónico alemán",
+      "Capacidad": "250 ml (aproximadamente 14-18g de flor seca)",
+      "Tapa": "Rosca hermética con sello de sellado total",
+      "Beneficio": "Protege los terpenos y previene la resequedad"
+    },
+    "tags": [
+      "frasco",
+      "curado",
+      "uv",
+      "antiolor",
+      "hermético"
+    ]
+  },
+  {
+    "id": "acc-004",
+    "name": "Atrapa Cenizas Ash Catcher Borosilicato 14mm",
+    "slug": "kit-limpieza-pro-bongs-pipas",
+    "category": "accesorios",
+    "categoryName": "Accesorios",
+    "price": 45,
+    "originalPrice": 55,
+    "rating": 4.7,
+    "reviewsCount": 16,
+    "inStock": true,
+    "featured": false,
+    "image": "/images/products/ash-catcher-atrapa-ceniza-vidrio-soplado.jpeg",
+    "description": "Set profesional para el mantenimiento impecable de piezas de vidrio. Incluye cepillos flexibles de cerdas de nylon de diferentes diámetros y tapones herméticos universales.",
+    "shortDescription": "Set de 5 cepillos de diversos calibres y tapones de silicona.",
+    "specs": {
+      "Contenido": "5 escobillas de alambre trenzado + 3 tapones de silicona",
+      "Compatibilidad": "Para juntas de 10mm, 14mm y 18mm",
+      "Cerdas": "Nylon de alta densidad que no raya el borosilicato"
+    },
+    "tags": [
+      "limpieza",
+      "cepillos",
+      "mantenimiento",
+      "bongs",
+      "pipas"
+    ]
+  }
+]

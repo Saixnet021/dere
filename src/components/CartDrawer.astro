@@ -1,0 +1,532 @@
+---
+import { STORE_CONFIG, formatPrice } from '../config';
+---
+
+<!-- Menú Desplegable Lateral del Carrito (Cart Drawer) -->
+<div id="cart-drawer-container" class="cart-drawer-wrap" aria-hidden="true">
+  <!-- Backdrop oscuro sutil -->
+  <div id="cart-drawer-backdrop" class="cart-backdrop"></div>
+
+  <!-- Panel Lateral -->
+  <aside class="cart-panel" role="dialog" aria-labelledby="cart-title">
+    <!-- Cabecera del Carrito -->
+    <div class="cart-header">
+      <div class="cart-title-wrap">
+        <h2 id="cart-title" class="cart-heading">Tu Carrito de Compras</h2>
+        <span id="cart-items-count" class="cart-items-badge">0 items</span>
+      </div>
+      <button id="cart-drawer-close" class="close-btn" aria-label="Cerrar carrito">
+        <svg class="icon-outline" viewBox="0 0 24 24" width="20" height="20">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Barra de Envío Gratis -->
+    <div id="shipping-progress-box" class="shipping-progress-box">
+      <div class="shipping-progress-text" id="shipping-progress-text">
+        <span>Agrega <strong id="shipping-amount-needed">{formatPrice(STORE_CONFIG.freeShippingThreshold)}</strong> más para <strong>Envío Gratis</strong></span>
+      </div>
+      <div class="shipping-progress-bar">
+        <div id="shipping-progress-fill" class="shipping-progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Lista de Items del Carrito -->
+    <div id="cart-items-list" class="cart-items-list">
+      <!-- Items renderizados dinámicamente con JavaScript -->
+    </div>
+
+    <!-- Estado de Carrito Vacío -->
+    <div id="cart-empty-state" class="cart-empty-state">
+      <div class="empty-icon-wrap">
+        <svg class="icon-outline" viewBox="0 0 24 24" width="36" height="36">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+      </div>
+      <h3 class="empty-title">Tu carrito está vacío</h3>
+      <p class="empty-desc">Descubre nuestros bongs, pipas, vaporizadores y accesorios botánicos de alta calidad.</p>
+      <a href="/productos" class="btn btn-outline btn-sm" id="cart-explore-btn">
+        Explorar Catálogo
+      </a>
+    </div>
+
+    <!-- Pie del Carrito con Totales y Checkout -->
+    <div id="cart-footer" class="cart-footer">
+      <div class="cart-subtotal-row">
+        <span class="subtotal-label">Subtotal estimado:</span>
+        <span id="cart-subtotal-val" class="subtotal-value">{formatPrice(0)}</span>
+      </div>
+      <p class="shipping-note">
+        <svg class="icon-outline" viewBox="0 0 24 24" width="14" height="14">
+          <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+          <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+          <circle cx="5.5" cy="18.5" r="2.5"></circle>
+          <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        </svg>
+        Envío discreto calculado en el checkout
+      </p>
+
+      <div class="cart-actions">
+        <a href="/checkout" class="btn btn-primary btn-block cart-checkout-btn">
+          <span>Finalizar Compra</span>
+          <svg class="icon-outline" viewBox="0 0 24 24" width="18" height="18">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="/carrito" class="btn btn-white btn-block">
+          Ver Carrito Detallado
+        </a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<style>
+  .cart-drawer-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    visibility: hidden;
+    transition: visibility var(--transition-normal);
+  }
+
+  .cart-drawer-wrap.open {
+    visibility: visible;
+  }
+
+  .cart-backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(17, 24, 39, 0.4);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+
+  .cart-drawer-wrap.open .cart-backdrop {
+    opacity: 1;
+  }
+
+  .cart-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--bg-secondary);
+    border-left: 1px solid var(--border-color);
+    box-shadow: var(--shadow-drawer);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+  }
+
+  .cart-drawer-wrap.open .cart-panel {
+    transform: translateX(0);
+  }
+
+  .cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .cart-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .cart-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .cart-items-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent-sage);
+    background-color: var(--bg-accent-light);
+    border: 1px solid var(--color-accent-border);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+  }
+
+  .close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-subtle);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .close-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* Barra de Envío */
+  .shipping-progress-box {
+    padding: 0.85rem 1.5rem;
+    background-color: var(--bg-subtle);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .shipping-progress-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+  }
+
+  .shipping-progress-bar {
+    height: 5px;
+    background-color: var(--border-color);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+  }
+
+  .shipping-progress-fill {
+    height: 100%;
+    background-color: var(--color-accent);
+    transition: width var(--transition-normal);
+  }
+
+  /* Lista de items */
+  .cart-items-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Item Individual del Carrito */
+  :global(.cart-item) {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+  }
+
+  :global(.cart-item-img-wrap) {
+    width: 70px;
+    height: 70px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.35rem;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  :global(.cart-item-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-xs);
+  }
+
+  :global(.cart-item-details) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  :global(.cart-item-title) {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+  }
+
+  :global(.cart-item-price) {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  :global(.cart-item-actions) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+
+  :global(.qty-stepper) {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    background-color: var(--bg-tertiary);
+    overflow: hidden;
+  }
+
+  :global(.qty-btn) {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  :global(.qty-btn:hover) {
+    background-color: var(--border-color);
+    color: var(--color-accent);
+  }
+
+  :global(.qty-value) {
+    width: 28px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  :global(.cart-item-remove) {
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    text-decoration: underline;
+  }
+
+  :global(.cart-item-remove:hover) {
+    color: #F87171;
+  }
+
+  /* Estado Vacío */
+  .cart-empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .empty-icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-subtle);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .empty-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .empty-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    max-width: 280px;
+  }
+
+  /* Footer del Carrito */
+  .cart-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+  }
+
+  .cart-subtotal-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtotal-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .subtotal-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .shipping-note {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+</style>
+
+<script>
+  import { $cart, $isCartOpen, removeFromCart, updateQuantity, getCartTotal, getCartCount } from '../stores/cartStore';
+  import { STORE_CONFIG, formatPrice } from '../config';
+
+  const container = document.getElementById('cart-drawer-container');
+  const backdrop = document.getElementById('cart-drawer-backdrop');
+  const closeBtn = document.getElementById('cart-drawer-close');
+  const itemsList = document.getElementById('cart-items-list');
+  const emptyState = document.getElementById('cart-empty-state');
+  const cartFooter = document.getElementById('cart-footer');
+  const subtotalVal = document.getElementById('cart-subtotal-val');
+  const itemsCount = document.getElementById('cart-items-count');
+  const badgeCount = document.getElementById('cart-count-badge');
+  const exploreBtn = document.getElementById('cart-explore-btn');
+
+  // Shipping progress elements
+  const shippingText = document.getElementById('shipping-progress-text');
+  const shippingFill = document.getElementById('shipping-progress-fill');
+
+  function openDrawer() {
+    $isCartOpen.set(true);
+  }
+
+  function closeDrawer() {
+    $isCartOpen.set(false);
+  }
+
+  // Bind drawer toggle buttons anywhere in DOM
+  document.querySelectorAll('#cart-drawer-toggle').forEach(btn => {
+    btn.addEventListener('click', openDrawer);
+  });
+
+  closeBtn?.addEventListener('click', closeDrawer);
+  backdrop?.addEventListener('click', closeDrawer);
+  exploreBtn?.addEventListener('click', closeDrawer);
+
+  // Subscribe to isCartOpen store
+  $isCartOpen.subscribe((isOpen) => {
+    if (isOpen) {
+      container?.classList.add('open');
+      container?.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    } else {
+      container?.classList.remove('open');
+      container?.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Render cart items reactively
+  function renderCart(items: any[]) {
+    const count = items.reduce((sum, item) => sum + item.quantity, 0);
+    const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    // Update Badges
+    if (badgeCount) badgeCount.textContent = count.toString();
+    if (itemsCount) itemsCount.textContent = `${count} ${count === 1 ? 'item' : 'items'}`;
+    if (subtotalVal) subtotalVal.textContent = formatPrice(total);
+
+    // Update Shipping Progress
+    const threshold = STORE_CONFIG.freeShippingThreshold;
+    if (shippingFill && shippingText) {
+      if (total >= threshold) {
+        shippingFill.style.width = '100%';
+        shippingText.innerHTML = `<span>🎉 ¡Felicidades! Tienes <strong>Envío Gratis</strong></span>`;
+      } else {
+        const percent = Math.min(100, Math.round((total / threshold) * 100));
+        const needed = threshold - total;
+        shippingFill.style.width = `${percent}%`;
+        shippingText.innerHTML = `<span>Agrega <strong>${formatPrice(needed)}</strong> más para <strong>Envío Gratis</strong></span>`;
+      }
+    }
+
+    // Toggle Empty State vs Items
+    if (items.length === 0) {
+      if (itemsList) itemsList.style.display = 'none';
+      if (cartFooter) cartFooter.style.display = 'none';
+      if (emptyState) emptyState.style.display = 'flex';
+    } else {
+      if (emptyState) emptyState.style.display = 'none';
+      if (itemsList) {
+        itemsList.style.display = 'flex';
+        itemsList.innerHTML = items.map(item => `
+          <div class="cart-item" data-item-id="${item.id}">
+            <div class="cart-item-img-wrap">
+              <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.src='/images/hero-banner.jpg'" />
+            </div>
+            <div class="cart-item-details">
+              <h4 class="cart-item-title">${item.name}</h4>
+              <span class="cart-item-price">${formatPrice(item.price)}</span>
+              <div class="cart-item-actions">
+                <div class="qty-stepper">
+                  <button class="qty-btn btn-minus" data-id="${item.id}" data-qty="${item.quantity - 1}" aria-label="Restar 1">−</button>
+                  <span class="qty-value">${item.quantity}</span>
+                  <button class="qty-btn btn-plus" data-id="${item.id}" data-qty="${item.quantity + 1}" aria-label="Sumar 1">+</button>
+                </div>
+                <button class="cart-item-remove" data-id="${item.id}">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        // Attach event listeners for steppers and remove buttons
+        itemsList.querySelectorAll('.btn-minus').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const target = e.currentTarget as HTMLElement;
+            const id = target.dataset.id!;
+            const qty = parseInt(target.dataset.qty!, 10);
+            updateQuantity(id, qty);
+          });
+        });
+
+        itemsList.querySelectorAll('.btn-plus').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const target = e.currentTarget as HTMLElement;
+            const id = target.dataset.id!;
+            const qty = parseInt(target.dataset.qty!, 10);
+            updateQuantity(id, qty);
+          });
+        });
+
+        itemsList.querySelectorAll('.cart-item-remove').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const target = e.currentTarget as HTMLElement;
+            const id = target.dataset.id!;
+            removeFromCart(id);
+          });
+        });
+      }
+      if (cartFooter) cartFooter.style.display = 'block';
+    }
+  }
+
+  // Subscribe to Cart store updates
+  $cart.subscribe(renderCart);
+</script>

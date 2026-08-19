@@ -1,0 +1,792 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { STORE_CONFIG, formatPrice } from '../config';
+---
+
+<Layout 
+  title="Finalizar Pedido 420 | Artículos para Hierbas Perú"
+  description="Completa tu pedido de forma rápida y segura. Coordinación directa por WhatsApp con envíos 100% discretos a todo el Perú."
+>
+  <div class="checkout-page">
+    <div class="container">
+      <!-- Encabezado -->
+      <div class="checkout-header">
+        <nav class="breadcrumbs" aria-label="Navegación secundaria">
+          <a href="/">Inicio</a>
+          <span class="sep">/</span>
+          <a href="/carrito">Carrito</a>
+          <span class="sep">/</span>
+          <span class="current">Checkout 420 Perú</span>
+        </nav>
+        <h1 class="checkout-title">Finalizar Pedido</h1>
+        <p class="checkout-subtitle">
+          Completa tus datos de entrega en Perú. Al confirmar, se abrirá WhatsApp con el detalle de tu orden listo para despachar.
+        </p>
+      </div>
+
+      <!-- Contenedor Principal de Checkout -->
+      <div id="checkout-main-grid" class="checkout-grid">
+        <!-- Columna Izquierda: Formulario de Datos -->
+        <div class="checkout-form-section">
+          <form id="checkout-form" class="checkout-form" novalidate>
+            <!-- Paso 1: Información de Contacto -->
+            <div class="form-card">
+              <div class="form-card-header">
+                <span class="step-badge">1</span>
+                <h2 class="card-title">Datos Personales</h2>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="customer-name" class="form-label">Nombre Completo *</label>
+                  <input 
+                    type="text" 
+                    id="customer-name" 
+                    name="name" 
+                    class="form-input" 
+                    placeholder="Ej. Juan Pérez" 
+                    required 
+                  />
+                  <span class="form-error" id="error-name">Por favor ingresa tu nombre completo</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="customer-phone" class="form-label">WhatsApp de Contacto (Perú) *</label>
+                  <input 
+                    type="tel" 
+                    id="customer-phone" 
+                    name="phone" 
+                    class="form-input" 
+                    placeholder="Ej. 987 654 321" 
+                    required 
+                  />
+                  <span class="form-error" id="error-phone">Ingresa un número de celular válido</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 2: Dirección de Envío -->
+            <div class="form-card">
+              <div class="form-card-header">
+                <span class="step-badge">2</span>
+                <h2 class="card-title">Dirección de Entrega en Perú</h2>
+              </div>
+
+              <div class="form-group">
+                <label for="customer-address" class="form-label">Dirección Completa (Av., Jr., Calle, Dpto) *</label>
+                <input 
+                  type="text" 
+                  id="customer-address" 
+                  name="address" 
+                  class="form-input" 
+                  placeholder="Ej. Av. Larco 456, Dpto 502 / Condominio Los Pinos" 
+                  required 
+                />
+                <span class="form-error" id="error-address">Por favor ingresa la dirección de entrega</span>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="customer-city" class="form-label">Ciudad / Departamento *</label>
+                  <input 
+                    type="text" 
+                    id="customer-city" 
+                    name="city" 
+                    class="form-input" 
+                    placeholder="Ej. Lima, Arequipa, Cusco, Trujillo..." 
+                    required 
+                  />
+                  <span class="form-error" id="error-city">Ingresa tu ciudad o departamento</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="customer-neighborhood" class="form-label">Distrito / Zona</label>
+                  <input 
+                    type="text" 
+                    id="customer-neighborhood" 
+                    name="neighborhood" 
+                    class="form-input" 
+                    placeholder="Ej. Miraflores, San Isidro, Surco..." 
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="customer-notes" class="form-label">Instrucciones de empaque y entrega (Opcional)</label>
+                <textarea 
+                  id="customer-notes" 
+                  name="notes" 
+                  class="form-textarea" 
+                  rows="2" 
+                  placeholder="Ej. Dejar en recepción con vigilancia, empaque 100% neutro por favor."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Paso 3: Preferencia de Pago en Perú -->
+            <div class="form-card">
+              <div class="form-card-header">
+                <span class="step-badge">3</span>
+                <h2 class="card-title">Método de Pago en Perú</h2>
+              </div>
+
+              <div class="payment-methods-grid">
+                <label class="payment-method-card">
+                  <input type="radio" name="paymentMethod" value="Yape / Plin" checked class="payment-radio" />
+                  <div class="payment-card-content">
+                    <span class="payment-method-title">Yape / Plin</span>
+                    <span class="payment-method-desc">Transferencia instantánea desde tu teléfono móvil</span>
+                  </div>
+                </label>
+
+                <label class="payment-method-card">
+                  <input type="radio" name="paymentMethod" value="Transferencia Bancaria (BCP / BBVA / Interbank)" class="payment-radio" />
+                  <div class="payment-card-content">
+                    <span class="payment-method-title">Transferencia BCP / BBVA / Interbank</span>
+                    <span class="payment-method-desc">Cuentas directas y transferencias interbancarias</span>
+                  </div>
+                </label>
+
+                <label class="payment-method-card">
+                  <input type="radio" name="paymentMethod" value="Pago Contra Entrega en Lima" class="payment-radio" />
+                  <div class="payment-card-content">
+                    <span class="payment-method-title">Pago Contra Entrega (Lima Metropolitana)</span>
+                    <span class="payment-method-desc">Paga en efectivo o con Yape al recibir tu paquete</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Botón de Envío del Formulario -->
+            <div class="form-submit-box">
+              <button type="submit" id="submit-order-btn" class="btn btn-primary btn-lg btn-block">
+                <svg class="icon-outline" viewBox="0 0 24 24" width="22" height="22">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+                <span>Enviar Pedido a WhatsApp Perú</span>
+              </button>
+              <p class="submit-disclaimer">
+                Al hacer clic, se abrirá WhatsApp con el resumen de tu compra para coordinar el despacho al número <strong>+{STORE_CONFIG.whatsappNumber}</strong>.
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Columna Derecha: Resumen de Artículos y Total -->
+        <div class="checkout-summary-section">
+          <div class="checkout-summary-card">
+            <h2 class="summary-card-title">Resumen de la Orden</h2>
+
+            <div id="checkout-items-list" class="checkout-items-list">
+              <!-- Renderizado dinámico -->
+            </div>
+
+            <div class="checkout-totals">
+              <div class="total-line">
+                <span>Subtotal</span>
+                <span id="chk-subtotal">{formatPrice(0)}</span>
+              </div>
+              <div class="total-line">
+                <span>Costo de Envío</span>
+                <span id="chk-shipping">Calculando...</span>
+              </div>
+              <div class="total-divider"></div>
+              <div class="total-line line-grand-total">
+                <span>Total a Pagar</span>
+                <span id="chk-total">{formatPrice(0)}</span>
+              </div>
+            </div>
+
+            <!-- Insignias de Privacidad -->
+            <div class="privacy-box">
+              <div class="privacy-item">
+                <svg class="icon-outline" viewBox="0 0 24 24" width="18" height="18">
+                  <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+                  <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                  <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+                <div>
+                  <strong>Empaque 100% Discreto</strong>
+                  <p>Caja sellada y neutra sin nombres ni referencias.</p>
+                </div>
+              </div>
+
+              <div class="privacy-item">
+                <svg class="icon-outline" viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <div>
+                  <strong>Compra Protegida en Perú</strong>
+                  <p>Coordinación directa y número de seguimiento Olva / Shalom.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pantalla de Éxito / Confirmación Post-Envío -->
+      <div id="order-success-screen" class="order-success-card" style="display: none;">
+        <div class="success-icon-box">
+          <svg class="icon-outline" viewBox="0 0 24 24" width="48" height="48">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h2 class="success-title">¡Tu pedido está listo para enviarse!</h2>
+        <p class="success-desc">
+          Si tu navegador no abrió WhatsApp automáticamente, haz clic en el siguiente botón para enviar tu orden a nuestro asesor en Perú:
+        </p>
+
+        <div class="success-actions">
+          <a id="manual-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+            <svg class="icon-outline" viewBox="0 0 24 24" width="20" height="20">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span>Abrir WhatsApp Ahora</span>
+          </a>
+          <a href="/productos" class="btn btn-secondary btn-lg">
+            Volver al Catálogo
+          </a>
+        </div>
+
+        <div class="order-preview-box">
+          <h3 class="preview-heading">Vista Previa del Mensaje Generado:</h3>
+          <pre id="order-msg-preview" class="message-code"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .checkout-page {
+    padding: 3rem 0 5rem 0;
+  }
+
+  .checkout-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--color-accent);
+  }
+
+  .breadcrumbs .sep {
+    color: var(--border-color);
+  }
+
+  .breadcrumbs .current {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .checkout-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .checkout-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 650px;
+    line-height: 1.5;
+  }
+
+  /* Grid de Checkout */
+  .checkout-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.85fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  /* Form Cards */
+  .form-card {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .step-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--text-on-accent);
+    font-size: 0.85rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-error {
+    display: none;
+    font-size: 0.775rem;
+    color: #F87171;
+    margin-top: 0.35rem;
+    font-weight: 500;
+  }
+
+  .form-error.visible {
+    display: block;
+  }
+
+  /* Métodos de Pago */
+  .payment-methods-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .payment-method-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .payment-method-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .payment-method-card:has(.payment-radio:checked) {
+    border-color: var(--color-accent);
+    background-color: var(--bg-accent-light);
+  }
+
+  .payment-radio {
+    margin-top: 0.25rem;
+    accent-color: var(--color-accent);
+  }
+
+  .payment-card-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .payment-method-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .payment-method-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  /* Botón de Enviar Pedido */
+  .form-submit-box {
+    margin-top: 2rem;
+  }
+
+  .submit-disclaimer {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.75rem;
+    line-height: 1.4;
+  }
+
+  /* Resumen Derecho */
+  .checkout-summary-card {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    position: sticky;
+    top: 96px;
+  }
+
+  .summary-card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.25rem;
+  }
+
+  .checkout-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  :global(.chk-item-row) {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 0.875rem;
+  }
+
+  :global(.chk-item-thumb) {
+    width: 48px;
+    height: 48px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.25rem;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  :global(.chk-item-thumb img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-xs);
+  }
+
+  :global(.chk-item-info) {
+    flex: 1;
+  }
+
+  :global(.chk-item-name) {
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin-bottom: 0.2rem;
+  }
+
+  :global(.chk-item-qty) {
+    font-size: 0.775rem;
+    color: var(--text-muted);
+  }
+
+  :global(.chk-item-total) {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--color-accent);
+  }
+
+  .checkout-totals {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .total-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .total-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 0.25rem 0;
+  }
+
+  .line-grand-total {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .line-grand-total span:last-child {
+    font-family: var(--font-display);
+    color: var(--color-accent);
+    font-size: 1.35rem;
+  }
+
+  /* Privacidad */
+  .privacy-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .privacy-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.775rem;
+    color: var(--text-secondary);
+  }
+
+  .privacy-item svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  .privacy-item strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+
+  /* Pantalla de Éxito */
+  .order-success-card {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem 2rem;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .success-icon-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--bg-accent-light);
+    border: 1px solid var(--color-accent-border);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .success-title {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .success-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .success-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .order-preview-box {
+    text-align: left;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+
+  .preview-heading {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .message-code {
+    font-family: monospace;
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    line-height: 1.5;
+    background: transparent;
+  }
+
+  @media (max-width: 992px) {
+    .checkout-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .form-grid-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { $cart, getCartTotal, clearCart } from '../stores/cartStore';
+  import { STORE_CONFIG, formatPrice } from '../config';
+
+  const form = document.getElementById('checkout-form') as HTMLFormElement;
+  const itemsContainer = document.getElementById('checkout-items-list');
+  const subtotalEl = document.getElementById('chk-subtotal');
+  const shippingEl = document.getElementById('chk-shipping');
+  const totalEl = document.getElementById('chk-total');
+
+  const mainGrid = document.getElementById('checkout-main-grid');
+  const successScreen = document.getElementById('order-success-screen');
+  const manualWaLink = document.getElementById('manual-whatsapp-link') as HTMLAnchorElement;
+  const msgPreview = document.getElementById('order-msg-preview');
+
+  let currentItems: any[] = [];
+
+  function renderCheckout(items: any[]) {
+    currentItems = items;
+    const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const threshold = STORE_CONFIG.freeShippingThreshold;
+    const shippingCost = (subtotal === 0 || subtotal >= threshold) ? 0 : 12.00;
+    const grandTotal = subtotal + shippingCost;
+
+    if (itemsContainer) {
+      if (items.length === 0) {
+        itemsContainer.innerHTML = `<p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; padding: 1rem 0;">Tu carrito está vacío. <a href="/productos" style="color: var(--color-accent); text-decoration: underline;">Agregar productos</a></p>`;
+      } else {
+        itemsContainer.innerHTML = items.map(item => `
+          <div class="chk-item-row">
+            <div class="chk-item-thumb">
+              <img src="${item.image}" alt="${item.name}" onerror="this.src='/images/hero-banner.jpg'" />
+            </div>
+            <div class="chk-item-info">
+              <h4 class="chk-item-name">${item.name}</h4>
+              <span class="chk-item-qty">${item.quantity} x ${formatPrice(item.price)}</span>
+            </div>
+            <div class="chk-item-total">
+              ${formatPrice(item.price * item.quantity)}
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    if (subtotalEl) subtotalEl.textContent = formatPrice(subtotal);
+    if (shippingEl) {
+      shippingEl.textContent = shippingCost === 0 
+        ? (subtotal >= threshold ? 'GRATIS' : 'S/ 0.00') 
+        : formatPrice(shippingCost);
+    }
+    if (totalEl) totalEl.textContent = formatPrice(grandTotal);
+  }
+
+  $cart.subscribe(renderCheckout);
+
+  // Validación y Generación del Pedido a WhatsApp Perú
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (currentItems.length === 0) {
+      alert('Tu carrito está vacío. Agrega al menos un producto antes de realizar el pedido.');
+      window.location.href = '/productos';
+      return;
+    }
+
+    const nameInput = document.getElementById('customer-name') as HTMLInputElement;
+    const phoneInput = document.getElementById('customer-phone') as HTMLInputElement;
+    const addressInput = document.getElementById('customer-address') as HTMLInputElement;
+    const cityInput = document.getElementById('customer-city') as HTMLInputElement;
+    const neighborhoodInput = document.getElementById('customer-neighborhood') as HTMLInputElement;
+    const notesInput = document.getElementById('customer-notes') as HTMLTextAreaElement;
+    const paymentMethodInput = document.querySelector('input[name="paymentMethod"]:checked') as HTMLInputElement;
+
+    let isValid = true;
+
+    function checkField(input: HTMLInputElement, errorId: string) {
+      const err = document.getElementById(errorId);
+      if (!input.value.trim()) {
+        err?.classList.add('visible');
+        isValid = false;
+      } else {
+        err?.classList.remove('visible');
+      }
+    }
+
+    checkField(nameInput, 'error-name');
+    checkField(phoneInput, 'error-phone');
+    checkField(addressInput, 'error-address');
+    checkField(cityInput, 'error-city');
+
+    if (!isValid) return;
+
+    const subtotal = currentItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const threshold = STORE_CONFIG.freeShippingThreshold;
+    const isFreeShipping = subtotal >= threshold;
+    const shippingCost = isFreeShipping ? 0 : 12.00;
+    const grandTotal = subtotal + shippingCost;
+
+    // Formatear Mensaje de WhatsApp para Perú
+    const itemsListText = currentItems.map(item => 
+      `• *${item.quantity}x* ${item.name}\n  (${item.quantity} x ${formatPrice(item.price)} = ${formatPrice(item.price * item.quantity)})`
+    ).join('\n');
+
+    const whatsappMessage = 
+`🌿 *NUEVO PEDIDO 420 — ARTÍCULOS PARA HIERBAS PERÚ*
+────────────────────────
+👤 *Cliente:* ${nameInput.value.trim()}
+📱 *WhatsApp:* ${phoneInput.value.trim()}
+📍 *Dirección:* ${addressInput.value.trim()}
+🏙️ *Ciudad / Dpto:* ${cityInput.value.trim()}${neighborhoodInput.value.trim() ? `\n🏡 *Distrito / Zona:* ${neighborhoodInput.value.trim()}` : ''}
+💳 *Método de Pago:* ${paymentMethodInput ? paymentMethodInput.value : 'Yape / Plin'}${notesInput.value.trim() ? `\n📝 *Notas de Entrega:* ${notesInput.value.trim()}` : ''}
+
+🛒 *PRODUCTOS SOLICITADOS:*
+${itemsListText}
+
+💰 *Subtotal:* ${formatPrice(subtotal)}
+🚚 *Envío en Perú:* ${isFreeShipping ? 'GRATIS (Supera los S/ 120.00)' : formatPrice(shippingCost)}
+💵 *TOTAL A PAGAR:* ${formatPrice(grandTotal)}
+────────────────────────
+🔒 *Solicito los datos para realizar el pago y coordinar el envío 100% discreto.*`;
+
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const waUrl = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodedMessage}`;
+
+    if (mainGrid) mainGrid.style.display = 'none';
+    if (successScreen) successScreen.style.display = 'block';
+    if (manualWaLink) manualWaLink.href = waUrl;
+    if (msgPreview) msgPreview.textContent = whatsappMessage;
+
+    window.open(waUrl, '_blank');
+    clearCart();
+  });
+</script>
