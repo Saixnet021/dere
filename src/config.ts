@@ -4,12 +4,14 @@ export const STORE_CONFIG = {
   name: "Artículos para Hierbas",
   tagline: "Smoke Shop Cannábica 420 | Perú",
   description: "Smoke Shop especializado en parafernalia 420 en Perú. Bongs de borosilicato, vaporizadores de hierba seca, pipas de diseño, papelillos Raw, filtros de carbón y grinders con envíos discretos a todo el Perú.",
-  // Número de WhatsApp configurado para recepción de pedidos (Perú +51)
-  whatsappNumber: import.meta.env.PUBLIC_WHATSAPP_NUMBER || "51987654321",
+  // Número oficial de WhatsApp directo (Perú +51) sin dependencia de .env
+  whatsappNumber: "51944104085",
+  whatsappFormatted: "+51 944 104 085",
   currencySymbol: "S/",
   currencyCode: "PEN",
   freeShippingThreshold: 120, // Envío gratis a partir de S/ 120 en todo Perú
   contact: {
+    phone: "+51 944 104 085",
     email: "contacto@articulosparahierbas.pe",
     city: "Lima, Perú",
     hours: "Lunes a Domingo: 10:00 AM - 10:00 PM"
